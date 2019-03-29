@@ -26,6 +26,11 @@ var ruleTester = new RuleTester({
 ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import name from "hello";' },
+    { code: 'require("hello");' },
+    { code: 'const a = require(["hello"]);' },
+    { code: 'const a = require(["hel" + "lo"]);' },
+    { code: 'i18n("hello");', options: [{ ignoreCallee: ['i18n'] }] },
+    { code: 'i18n.t("hello");', options: [{ ignoreCallee: ['i18n.t'] }] },
     { code: 'const a = "absfoo";', options: [{ ignore: ['foo'] }] },
     { code: 'const a = "fooabc";', options: [{ ignore: ['^foo'] }] },
     { code: 'const a = "FOO";' },
@@ -36,6 +41,7 @@ ruleTester.run('no-literal-string', rule, {
 
   invalid: [
     { code: 'const a = "foo";', errors },
+    { code: 'const a = call("Ffo");', errors },
     { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors }
   ]
 });
