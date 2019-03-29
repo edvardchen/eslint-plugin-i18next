@@ -31,7 +31,7 @@ var a = {
 var foo = 'FOO';
 ```
 
-#### i18n
+### i18n
 
 This rule allows to call i18next translate function.
 
@@ -43,7 +43,7 @@ var bar = i18next.t('bar');
 var bar2 = i18n.t('bar');
 ```
 
-#### Reudx/Vuex
+### Reudx/Vuex
 
 This rule also works with those state managers like
 [Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
@@ -56,9 +56,9 @@ var bar = store.dispatch('bar');
 var bar2 = store.commit('bar');
 ```
 
-### Options
+## Options
 
-#### ignore
+### ignore
 
 The `ignore` option specifies exceptions not to check for
 literal strings that match one of regexp paterns.
@@ -70,18 +70,16 @@ Examples of correct code for the `{ "ignore": ['foo'] }` option:
 const a = 'afoo';
 ```
 
-#### ignoreCallee
+### ignoreCallee
 
 THe `ignoreCallee` option speficies exceptions not check for
 function calls whose names match one of regexp patterns.
 
-Examples of correct code for the `{ "ignoreCallee": ['i18n.t', 'i18n'] }` option:
+Examples of correct code for the `{ "ignoreCallee": ["foo"] }` option:
 
 ```js
-/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ['i18n.t', 'i18n'] }]*/
-const foo = i18n('foo');
-
-const bar = i18n.t('bar');
+/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["foo"] }]*/
+const bar = foo('bar');
 ```
 
 ## When Not To Use It

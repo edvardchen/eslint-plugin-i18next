@@ -36,10 +36,12 @@ or
 }
 ```
 
-## no-literal-string
+## Rule `no-literal-string`
 
 This rule aims to avoid developers to display literal string to users
 in those projects which need to support [multi-language](https://www.i18next.com/).
+
+### Rule Details
 
 It will find out all literal strings and validate them.
 
@@ -111,17 +113,9 @@ const a = 'afoo';
 THe `ignoreCallee` option speficies exceptions not check for
 function calls whose names match one of regexp patterns.
 
-Examples of correct code for the `{ "ignoreCallee": ['i18n.t', 'i18n'] }` option:
+Examples of correct code for the `{ "ignoreCallee": ["foo"] }` option:
 
 ```js
-/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ['i18n.t', 'i18n'] }]*/
-const foo = i18n('foo');
-
-const bar = i18n.t('bar');
+/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["foo"] }]*/
+const bar = foo('bar');
 ```
-
-## When Not To Use It
-
-Your project maybe not need to support multi-language or you dont care to spread literal string anywhre.
-
-- [no-literal-string](https://github.com/edvardchen/eslint-plugin-i18next/blob/master/docs/rules/no-literal-string.md) disallow to use literal strings
