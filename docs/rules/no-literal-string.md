@@ -1,10 +1,11 @@
 # disallow literal string (no-literal-string)
 
-Please describe the origin of the rule here.
+This rule aims to avoid developers to display literal string to users
+in those projects which need to support [multi-language](https://www.i18next.com/).
 
 ## Rule Details
 
-This rule aims to...
+It will find out all literal strings and validate them.
 
 Examples of **incorrect** code for this rule:
 
