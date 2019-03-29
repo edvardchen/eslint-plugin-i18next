@@ -34,13 +34,28 @@ var foo = 'FOO';
 
 #### ignore
 
-The `ignore` option specifies exceptions not to check for literal strings that match one of regexp paterns.
+The `ignore` option specifies exceptions not to check for
+literal strings that match one of regexp paterns.
 
 Examples of correct code for the `{ "ignore": ['foo'] }` option:
 
 ```js
 /*eslint i18next/no-literal-string: ["error", {"ignore": ["foo"]}]*/
 const a = 'afoo';
+```
+
+#### ignoreCallee
+
+THe `ignoreCallee` option speficies exceptions not check for
+function calls whose names match one of regexp patterns.
+
+Examples of correct code for the `{ "ignoreCallee": ['i18n.t', 'i18n'] }` option:
+
+```js
+/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ['i18n.t', 'i18n'] }]*/
+const foo = i18n('foo');
+
+const bar = i18n.t('bar');
 ```
 
 ## When Not To Use It
