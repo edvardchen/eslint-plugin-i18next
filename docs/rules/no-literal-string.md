@@ -30,6 +30,31 @@ var a = {
 var foo = 'FOO';
 ```
 
+#### i18n
+
+This rule allows to call i18next translate function.
+
+**Correct** code:
+
+```js
+/*eslint i18next/no-literal-string: "error"*/
+var bar = i18next.t('bar');
+var bar2 = i18n.t('bar');
+```
+
+#### Reudx/Vuex
+
+This rule also works with those state managers like
+[Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
+
+**Correct** code:
+
+```js
+/*eslint i18next/no-literal-string: "error"*/
+var bar = store.dispatch('bar');
+var bar2 = store.commit('bar');
+```
+
 ### Options
 
 #### ignore
