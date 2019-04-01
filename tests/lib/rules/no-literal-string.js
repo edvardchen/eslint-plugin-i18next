@@ -38,13 +38,16 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = "fooabc";', options: [{ ignore: ['^foo'] }] },
     { code: 'const a = "FOO";' },
     { code: 'var A_B = "world";' },
+    { code: 'var a = {["A_B"]: "hello world"};' },
     { code: 'var a = {[A_B]: "hello world"};' },
-    { code: 'var a = {A_B: "hello world"};' }
+    { code: 'var a = {A_B: "hello world"};' },
+    { code: 'var a = {foo: "FOO"};' }
   ],
 
   invalid: [
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },
+    { code: 'var a = {foo: "bar"};', errors },
     { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors }
   ]
 });
