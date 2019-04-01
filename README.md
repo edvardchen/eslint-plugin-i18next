@@ -81,6 +81,19 @@ var bar = i18next.t('bar');
 var bar2 = i18n.t('bar');
 ```
 
+Maybe you use other internationalization libraries
+not [i18next](https://www.i18next.com/). You can use like this:
+
+```js
+/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["yourI18n"] }]*/
+const bar = yourI18n('bar');
+
+// or
+
+/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["yourI18n.method"] }]*/
+const bar = yourI18n.method('bar');
+```
+
 #### Reudx/Vuex
 
 This rule also works with those state managers like
