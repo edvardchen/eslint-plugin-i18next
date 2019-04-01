@@ -41,6 +41,20 @@ or
 This rule aims to avoid developers to display literal string to users
 in those projects which need to support [multi-language](https://www.i18next.com/).
 
+The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
+
+Literay strings that are not constant string (all characters are `UPPERCASE`) are typically mistakes. For example:
+
+```js
+const foo = 'foo';
+```
+
+They are frowned upon in favor of internationalization:
+
+```js
+const foo = i18next.t('foo'); // wrapped by i18n translation function
+```
+
 ### Rule Details
 
 It will find out all literal strings and validate them.
