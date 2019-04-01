@@ -94,7 +94,7 @@ const bar = yourI18n('bar');
 const bar = yourI18n.method('bar');
 ```
 
-#### Reudx/Vuex
+#### Redux/Vuex
 
 This rule also works with those state managers like
 [Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
