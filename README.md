@@ -43,16 +43,47 @@ in those projects which need to support [multi-language](https://www.i18next.com
 
 The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
 
-Literay strings that are not constant string (all characters are `UPPERCASE`) are typically mistakes. For example:
+All literal strings in html template are typically mistakes. For JSX example:
 
-```js
-const foo = 'foo';
+```HTML
+<div>foo</div>
 ```
 
-They are frowned upon in favor of internationalization:
+They should be translated by [i18next translation api](https://www.i18next.com/):
+
+```HTML
+<div>{i18next.t('foo')}</div>
+```
+
+Same for [Vue template](https://vuejs.org/v2/guide/syntax.html):
+
+```vue
+<!-- incorrect -->
+<template>
+  foo
+</template>
+
+<!-- correct -->
+<template>
+  {{ i18next.t('foo') }}
+</template>
+```
+
+For plain javascript, literal strings that are not constant string (all characters are `UPPERCASE`) are disallowed:
 
 ```js
-const foo = i18next.t('foo'); // wrapped by i18n translation function
+// incorrect
+const foo = 'foo';
+
+// correct
+const foo = i18next.t('foo');
+```
+
+It is all right to use `UPPERCASE` string in javascript:
+
+```js
+// correct
+const foo = 'FOO';
 ```
 
 ### Rule Details
