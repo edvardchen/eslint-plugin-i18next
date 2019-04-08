@@ -20,7 +20,10 @@ const errors = [{ message }]; // default errors
 var ruleTester = new RuleTester({
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   }
 });
 ruleTester.run('no-literal-string', rule, {
@@ -41,13 +44,39 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'var a = {["A_B"]: "hello world"};' },
     { code: 'var a = {[A_B]: "hello world"};' },
     { code: 'var a = {A_B: "hello world"};' },
-    { code: 'var a = {foo: "FOO"};' }
+    { code: 'var a = {foo: "FOO"};' },
+    // JSX
+    { code: '<div>{i18next.t("foo")}</div>' }
   ],
 
   invalid: [
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },
     { code: 'var a = {foo: "bar"};', errors },
-    { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors }
+    { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors },
+    // JSX
+    { code: '<div>foo</div>', errors },
+    { code: '<div>FOO</div>', errors }
+  ]
+});
+
+//
+// ─── VUE ────────────────────────────────────────────────────────────────────────
+//
+
+const vueTester = new RuleTester({
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    sourceType: 'module'
+  }
+});
+
+vueTester.run('no-literal-string', rule, {
+  valid: [{ code: '<template>{{ i18next.t("abc") }}</template>' }],
+  invalid: [
+    {
+      code: '<template>abc</template>',
+      errors
+    }
   ]
 });
