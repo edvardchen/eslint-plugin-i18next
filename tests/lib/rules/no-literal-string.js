@@ -47,6 +47,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'var a = {A_B: "hello world"};' },
     { code: 'var a = {foo: "FOO"};' },
     // JSX
+    { code: '<div className="primary"></div>' },
+    { code: '<div className={a ? "active": "inactive"}></div>' },
     { code: '<div>{i18next.t("foo")}</div>' }
   ],
 
@@ -81,3 +83,29 @@ vueTester.run('no-literal-string', rule, {
     }
   ]
 });
+// ────────────────────────────────────────────────────────────────────────────────
+
+//
+// ─── TYPESCRIPT ─────────────────────────────────────────────────────────────────
+//
+
+const tsTester = new RuleTester({
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
+  }
+});
+
+tsTester.run('no-literal-string', rule, {
+  valid: [{ code: '<div className="hello"></div>' }],
+  invalid: [
+    {
+      code: `(<button className={styles.btn}>loading</button>)`,
+      errors
+    }
+  ]
+});
+// ────────────────────────────────────────────────────────────────────────────────
