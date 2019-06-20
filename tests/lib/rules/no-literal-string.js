@@ -28,6 +28,7 @@ var ruleTester = new RuleTester({
 });
 ruleTester.run('no-literal-string', rule, {
   valid: [
+    { code: 'import("hello")' },
     { code: 'import name from "hello";' },
     { code: 'require("hello");' },
     { code: 'const a = require(["hello"]);' },
