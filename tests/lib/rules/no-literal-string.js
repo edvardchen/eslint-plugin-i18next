@@ -80,6 +80,10 @@ vueTester.run('no-literal-string', rule, {
     {
       code: '<template>abc</template>',
       errors
+    },
+    {
+      code: '<template>{{"hello"}}</template>',
+      errors
     }
   ]
 });
