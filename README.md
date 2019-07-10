@@ -41,33 +41,7 @@ or
 This rule aims to avoid developers to display literal string to users
 in those projects which need to support [multi-language](https://www.i18next.com/).
 
-The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
-
-All literal strings in html template are typically mistakes. For JSX example:
-
-```HTML
-<div>foo</div>
-```
-
-They should be translated by [i18next translation api](https://www.i18next.com/):
-
-```HTML
-<div>{i18next.t('foo')}</div>
-```
-
-Same for [Vue template](https://vuejs.org/v2/guide/syntax.html):
-
-```vue
-<!-- incorrect -->
-<template>
-  foo
-</template>
-
-<!-- correct -->
-<template>
-  {{ i18next.t('foo') }}
-</template>
-```
+> <span style="color: lightcoral">Note:</span> Disable auto-fix because key in the call `i18next.t(key)` ussally was not the same as the literal
 
 For plain javascript, literal strings that are not constant string (all characters are `UPPERCASE`) are disallowed:
 
@@ -150,6 +124,22 @@ This rule also works with those state managers like
 /*eslint i18next/no-literal-string: "error"*/
 var bar = store.dispatch('bar');
 var bar2 = store.commit('bar');
+```
+
+#### MISC
+
+The following cases would be skip default:
+
+```typescript
+import mod from 'm';
+import('mod');
+require('mod');
+
+export { named } from 'm';
+export * from 'm';
+
+var a: Type['member'];
+var a: Omit<T, 'key'>;
 ```
 
 ### Options
