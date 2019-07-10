@@ -106,7 +106,15 @@ const tsTester = new RuleTester({
 });
 
 tsTester.run('no-literal-string', rule, {
-  valid: [{ code: '<div className="hello"></div>' }],
+  valid: [
+    { code: '<div className="hello"></div>' },
+    {
+      code: "var a: Element['nodeName']"
+    },
+    {
+      code: "var a: Omit<T, 'af'>"
+    }
+  ],
   invalid: [
     {
       code: `(<button className={styles.btn}>loading</button>)`,
