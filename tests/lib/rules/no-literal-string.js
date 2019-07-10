@@ -30,6 +30,8 @@ ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import("hello")' },
     { code: 'import name from "hello";' },
+    { code: 'export * from "hello_export_all";' },
+    { code: 'export { a } from "hello_export";' },
     { code: 'require("hello");' },
     { code: 'const a = require(["hello"]);' },
     { code: 'const a = require(["hel" + "lo"]);' },
