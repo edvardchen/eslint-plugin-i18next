@@ -9,7 +9,8 @@
 //------------------------------------------------------------------------------
 
 var rule = require('../../../lib/rules/no-literal-string'),
-  RuleTester = require('eslint').RuleTester;
+  RuleTester = require('eslint').RuleTester,
+  path = require('path');
 
 //------------------------------------------------------------------------------
 // Tests
@@ -100,27 +101,25 @@ const tsTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    }
+    project: path.resolve(__dirname, 'tsconfig.json')
   }
 });
 
 tsTester.run('no-literal-string', rule, {
   valid: [
-    { code: '<div className="hello"></div>' },
-    {
-      code: "var a: Element['nodeName']"
-    },
-    {
-      code: "var a: Omit<T, 'af'>"
-    }
+    { code: '<div className="hello"></div>', filename: 'a.tsx' },
+    { code: "var a: Element['nodeName']" },
+    { code: "var a: Omit<T, 'af'>" },
+    { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" }
   ],
   invalid: [
     {
-      code: `(<button className={styles.btn}>loading</button>)`,
+      code: `<button className={styles.btn}>loading</button>`,
+      filename: 'a.tsx',
       errors
-    }
+    },
+
+    { code: "var a: {type: string} = {type: 'bb'}", errors }
   ]
 });
 // ────────────────────────────────────────────────────────────────────────────────
