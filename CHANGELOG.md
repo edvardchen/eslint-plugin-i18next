@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.0.0...v2.1.0) (2019-07-11)
+
+
+### Features
+
+* more TS supports ([382ccab](https://github.com/edvardchen/eslint-plugin-i18next/commit/382ccab))
+* skip literal with LiteralType ([40c54b1](https://github.com/edvardchen/eslint-plugin-i18next/commit/40c54b1))
+
+
+
 ## [2.0.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v1.2.0...v2.0.0) (2019-07-10)
 
 
