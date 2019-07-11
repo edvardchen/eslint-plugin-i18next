@@ -110,7 +110,11 @@ tsTester.run('no-literal-string', rule, {
     { code: '<div className="hello"></div>', filename: 'a.tsx' },
     { code: "var a: Element['nodeName']" },
     { code: "var a: Omit<T, 'af'>" },
-    { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" }
+    { code: `var a: 'abc' = 'abc'` },
+    { code: `var a: 'abc' | 'name'  | undefined= 'abc'` },
+    { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" },
+    { code: "function Button({ t= 'name'  }: {t: 'name'}){} " },
+    { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" }
   ],
   invalid: [
     {
@@ -119,6 +123,14 @@ tsTester.run('no-literal-string', rule, {
       errors
     },
 
+    {
+      code: "function Button({ t= 'name'  }: {t: 'name' &  'abc'}){} ",
+      errors
+    },
+    {
+      code: "function Button({ t= 'name'  }: {t: 1 |  'abc'}){} ",
+      errors
+    },
     { code: "var a: {type: string} = {type: 'bb'}", errors }
   ]
 });
