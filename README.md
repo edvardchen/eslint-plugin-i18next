@@ -43,23 +43,6 @@ in those projects which need to support [multi-language](https://www.i18next.com
 
 > <span style="color: lightcoral">Note:</span> Disable auto-fix because key in the call `i18next.t(key)` ussally was not the same as the literal
 
-For plain javascript, literal strings that are not constant string (all characters are `UPPERCASE`) are disallowed:
-
-```js
-// incorrect
-const foo = 'foo';
-
-// correct
-const foo = i18next.t('foo');
-```
-
-It is all right to use `UPPERCASE` string in javascript:
-
-```js
-// correct
-const foo = 'FOO';
-```
-
 ### Rule Details
 
 It will find out all literal strings and validate them.
@@ -113,6 +96,34 @@ const bar = yourI18n('bar');
 const bar = yourI18n.method('bar');
 ```
 
+#### HTML Markup
+
+All literal strings in html template are typically mistakes. For JSX example:
+
+```HTML
+<div>foo</div>
+```
+
+They should be translated by [i18next translation api](https://www.i18next.com/):
+
+```HTML
+<div>{i18next.t('foo')}</div>
+```
+
+Same for [Vue template](https://vuejs.org/v2/guide/syntax.html):
+
+```HTML
+<!-- incorrect -->
+<template>
+  foo
+</template>
+
+<!-- correct -->
+<template>
+  {{ i18next.t('foo') }}
+</template>
+```
+
 #### Redux/Vuex
 
 This rule also works with those state managers like
@@ -126,9 +137,36 @@ var bar = store.dispatch('bar');
 var bar2 = store.commit('bar');
 ```
 
-#### MISC
+#### Typescript
 
-The following cases would be skip default:
+The following cases are **correct**:
+
+```typescript
+// skip TSLiteralType
+var a: Type['member'];
+var a: Omit<T, 'key'>;
+
+// skip literal with LiteralType
+var a: { t: 'button' } = { t: 'button' };
+var a: 'abc' | 'name' = 'abc';
+```
+
+We require type information to work properly, so you need to add some options in your `.eslintrc`:
+
+```js
+  "parserOptions": {
+    // path of your tsconfig.json
+    "project": "./tsconfig.json"
+  }
+```
+
+See
+[here](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#usage)
+for more deteils.
+
+#### Import/Export
+
+The following cases are **correct**:
 
 ```typescript
 import mod from 'm';
@@ -137,9 +175,6 @@ require('mod');
 
 export { named } from 'm';
 export * from 'm';
-
-var a: Type['member'];
-var a: Omit<T, 'key'>;
 ```
 
 ### Options
