@@ -32,6 +32,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'import("hello")' },
     { code: "name === 'Android' || name === 'iOS'" },
     { code: 'import name from "hello";' },
+    { code: 'a.indexOf("ios")' },
+    { code: 'a.includes("ios")' },
     { code: 'export * from "hello_export_all";' },
     { code: 'export { a } from "hello_export";' },
     { code: 'require("hello");' },
