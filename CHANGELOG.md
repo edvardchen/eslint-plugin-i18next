@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.1.1...v2.2.0) (2019-07-24)
+
+
+### Bug Fixes
+
+* enhance ExportNamedDeclaration ([29e9f29](https://github.com/edvardchen/eslint-plugin-i18next/commit/29e9f29))
+
+
+### Features
+
+* allow string comparison ([a78d150](https://github.com/edvardchen/eslint-plugin-i18next/commit/a78d150))
+
+
+
 ### [2.1.1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.1.0...v2.1.1) (2019-07-24)
 
 
