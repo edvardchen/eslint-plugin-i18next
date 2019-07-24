@@ -30,6 +30,7 @@ var ruleTester = new RuleTester({
 ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import("hello")' },
+    { code: "name === 'Android' || name === 'iOS'" },
     { code: 'import name from "hello";' },
     { code: 'export * from "hello_export_all";' },
     { code: 'export { a } from "hello_export";' },
@@ -57,6 +58,7 @@ ruleTester.run('no-literal-string', rule, {
   ],
 
   invalid: [
+    { code: 'a + "b"', errors },
     { code: 'export const a = "hello_string";', errors },
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },

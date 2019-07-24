@@ -177,6 +177,15 @@ export { named } from 'm';
 export * from 'm';
 ```
 
+#### Comparison
+
+String comparison is fine.
+
+```typescript
+// correct
+name === 'Android' || name === 'iOS';
+```
+
 ### Options
 
 #### ignore
