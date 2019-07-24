@@ -57,6 +57,7 @@ ruleTester.run('no-literal-string', rule, {
   ],
 
   invalid: [
+    { code: 'export const a = "hello_string";', errors },
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },
     { code: 'var a = {foo: "bar"};', errors },
