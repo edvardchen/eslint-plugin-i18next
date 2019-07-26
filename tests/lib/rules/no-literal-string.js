@@ -31,6 +31,7 @@ ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import("hello")' },
     { code: "name === 'Android' || name === 'iOS'" },
+    { code: "switch(a){ case 'a': break; default: break;}" },
     { code: 'import name from "hello";' },
     { code: 'a.indexOf("ios")' },
     { code: 'a.includes("ios")' },
@@ -61,6 +62,10 @@ ruleTester.run('no-literal-string', rule, {
 
   invalid: [
     { code: 'a + "b"', errors },
+    {
+      code: "switch(a){ case 'a': var a ='b'; break; default: break;}",
+      errors
+    },
     { code: 'export const a = "hello_string";', errors },
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },
