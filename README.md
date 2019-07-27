@@ -186,6 +186,20 @@ String comparison is fine.
 name === 'Android' || name === 'iOS';
 ```
 
+#### SwithCase
+
+Skip switchcase statement:
+
+```typescript
+// correct
+switch (type) {
+  case 'foo':
+    break;
+  case 'bar':
+    break;
+}
+```
+
 ### Options
 
 #### ignore
