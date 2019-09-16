@@ -37,6 +37,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'a.includes("ios")' },
     { code: 'export * from "hello_export_all";' },
     { code: 'export { a } from "hello_export";' },
+    { code: 'document.addEventListener("click", (event) => { event.preventDefault() })' },
     { code: 'require("hello");' },
     { code: 'const a = require(["hello"]);' },
     { code: 'const a = require(["hel" + "lo"]);' },
@@ -57,7 +58,11 @@ ruleTester.run('no-literal-string', rule, {
     // JSX
     { code: '<div className="primary"></div>' },
     { code: '<div className={a ? "active": "inactive"}></div>' },
-    { code: '<div>{i18next.t("foo")}</div>' }
+    { code: '<div>{i18next.t("foo")}</div>' },
+    { code: '<svg viewBox="0 0 20 40"></svg>' },
+    { code: '<line x1="0" y1="0" x2="10" y2="20" />' },
+    { code: '<path d="M10 10" />' },
+    { code: '<circle cx="10" cy="10" r="2" fill="red" />' }
   ],
 
   invalid: [
