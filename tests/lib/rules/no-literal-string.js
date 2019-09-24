@@ -62,7 +62,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<svg viewBox="0 0 20 40"></svg>' },
     { code: '<line x1="0" y1="0" x2="10" y2="20" />' },
     { code: '<path d="M10 10" />' },
-    { code: '<circle cx="10" cy="10" r="2" fill="red" />' }
+    { code: '<circle cx="10" cy="10" r="2" fill="red" />' },
+    { code: '<div foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] }
   ],
 
   invalid: [
@@ -78,7 +79,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors },
     // JSX
     { code: '<div>foo</div>', errors },
-    { code: '<div>FOO</div>', errors }
+    { code: '<div>FOO</div>', errors },
+    { code: '<div foo="bar" />', errors }
   ]
 });
 
