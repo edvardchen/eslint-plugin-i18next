@@ -225,3 +225,14 @@ Examples of correct code for the `{ "ignoreCallee": ["foo"] }` option:
 /*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["foo"] }]*/
 const bar = foo('bar');
 ```
+
+#### ignoreAttribute
+
+The `ignoreAttribute` option specifies exceptions not to check for JSX attributes that match one of ignored attributes.
+
+Examples of correct code for the `{ "ignoreAttribute": ["foo"] }` option:
+
+```jsx
+/*eslint i18next/no-literal-string: ["error", { "ignoreAttribute": ["foo"] }]*/
+const element = <div foo="bar" />;
+```
