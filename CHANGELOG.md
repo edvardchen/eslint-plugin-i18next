@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.4.0...v2.5.0) (2019-10-08)
+
+
+### Features
+
+* add more ignored attributes and callee ([0f9e2ec](https://github.com/edvardchen/eslint-plugin-i18next/commit/0f9e2ec))
+
 ## [2.4.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.3.1...v2.4.0) (2019-10-08)
 
 
