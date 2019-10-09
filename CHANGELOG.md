@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.5.0...v3.0.0) (2019-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* SInce the whitelist was cut short, it would complain when the removed attributes
+were added to custom component like <Foo src="hello" />
+
+### Features
+
+* ignore most DOM attrs ([71483c2](https://github.com/edvardchen/eslint-plugin-i18next/commit/71483c2))
+
 ## [2.5.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.4.0...v2.5.0) (2019-10-08)
 
 
