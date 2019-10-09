@@ -39,8 +39,14 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'a.endsWith("@gmail.com")' },
     { code: 'export * from "hello_export_all";' },
     { code: 'export { a } from "hello_export";' },
-    { code: 'document.addEventListener("click", (event) => { event.preventDefault() })' },
-    { code: 'document.removeEventListener("click", (event) => { event.preventDefault() })' },
+    {
+      code:
+        'document.addEventListener("click", (event) => { event.preventDefault() })'
+    },
+    {
+      code:
+        'document.removeEventListener("click", (event) => { event.preventDefault() })'
+    },
     { code: 'window.postMessage("message", "*")' },
     { code: 'document.getElementById("some-id")' },
     { code: 'require("hello");' },
@@ -67,13 +73,21 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<svg viewBox="0 0 20 40"></svg>' },
     { code: '<line x1="0" y1="0" x2="10" y2="20" />' },
     { code: '<path d="M10 10" />' },
-    { code: '<circle width="16px" height="16px" cx="10" cy="10" r="2" fill="red" />' },
-    { code: '<a href="https://google.com" target="_blank" rel="noreferrer noopener"></a>' },
-    { code: '<div id="some-id" tabIndex="0" aria-labelledby="label-id"></div>' },
+    {
+      code:
+        '<circle width="16px" height="16px" cx="10" cy="10" r="2" fill="red" />'
+    },
+    {
+      code:
+        '<a href="https://google.com" target="_blank" rel="noreferrer noopener"></a>'
+    },
+    {
+      code: '<div id="some-id" tabIndex="0" aria-labelledby="label-id"></div>'
+    },
     { code: '<div role="button"></div>' },
     { code: '<img src="./image.png" />' },
     { code: '<button type="button" for="form-id" />' },
-    { code: '<div foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] }
+    { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] }
   ],
 
   invalid: [
@@ -90,7 +104,7 @@ ruleTester.run('no-literal-string', rule, {
     // JSX
     { code: '<div>foo</div>', errors },
     { code: '<div>FOO</div>', errors },
-    { code: '<div foo="bar" />', errors },
+    { code: '<DIV foo="bar" />', errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors }
   ]
