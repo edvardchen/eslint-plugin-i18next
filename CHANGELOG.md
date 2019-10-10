@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.1.0...v3.1.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* add missing plugin in recommended config ([dde83ed](https://github.com/edvardchen/eslint-plugin-i18next/commit/dde83ed))
+
 ## [3.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.0.0...v3.1.0) (2019-10-10)
 
 
