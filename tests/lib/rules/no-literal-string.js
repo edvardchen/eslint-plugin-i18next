@@ -53,6 +53,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = require(["hello"]);' },
     { code: 'const a = require(["hel" + "lo"]);' },
     { code: 'const a = 1;' },
+    { code: 'const a = "?";' },
+    { code: `const a = "0123456789!@#$%^&*()_+|~-=\`[]{};':\\",./<>?";` },
     { code: 'i18n("hello");' },
     { code: 'dispatch("hello");' },
     { code: 'store.dispatch("hello");' },
