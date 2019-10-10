@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.0.0...v3.1.0) (2019-10-10)
+
+
+### Features
+
+* ignore not-word string ([1752cbe](https://github.com/edvardchen/eslint-plugin-i18next/commit/1752cbe))
+
 ## [3.0.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v2.5.0...v3.0.0) (2019-10-09)
 
 
