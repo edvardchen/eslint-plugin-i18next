@@ -68,6 +68,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'var a = {[A_B]: "hello world"};' },
     { code: 'var a = {A_B: "hello world"};' },
     { code: 'var a = {foo: "FOO"};' },
+    { code: 'class Form extends Component { displayName = "FormContainer" };' },
     // JSX
     { code: '<div className="primary"></div>' },
     { code: '<div className={a ? "active": "inactive"}></div>' },
@@ -103,6 +104,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = call("Ffo");', errors },
     { code: 'var a = {foo: "bar"};', errors },
     { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors },
+    { code: 'class Form extends Component { property = "Something" };', errors },
     // JSX
     { code: '<div>foo</div>', errors },
     { code: '<div>FOO</div>', errors },
