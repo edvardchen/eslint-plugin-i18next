@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.1.1...v3.2.0) (2019-10-21)
+
+
+### Features
+
+* allow displayName property in classes ([5362281](https://github.com/edvardchen/eslint-plugin-i18next/commit/5362281))
+
 ### [3.1.1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.1.0...v3.1.1) (2019-10-10)
 
 
