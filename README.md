@@ -237,6 +237,22 @@ Examples of correct code for the `{ "ignoreAttribute": ["foo"] }` option:
 const element = <div foo="bar" />;
 ```
 
+#### ignoreElement
+
+The `ignoreElement` option specifies exceptions not to check for JSX elements that match one of ignored elements. This includes strings within children of these elements.
+
+Examples of correct code for the `{ "ignoreElement": ["foo"] }` option:
+
+```jsx
+/*eslint i18next/no-literal-string: ["error", { "ignoreElement": ["foo"] }]*/
+const element = <foo>a</foo>;
+const element2 = (
+  <foo>
+    <bar>b</bar>
+  </foo>
+);
+```
+
 #### ignoreProperty
 
 The `ignoreProperty` option specifies exceptions not to check for object properties that match one of ignored properties.
