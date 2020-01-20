@@ -92,11 +92,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<img src="./image.png" />' },
     { code: '<button type="button" for="form-id" />' },
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
-    { code: '<div>foo</div>', options: [{ ignoreElement: ['div'] }] },
-    {
-      code: '<div><span>bar</span></div>',
-      options: [{ ignoreElement: ['div'] }]
-    }
+    { code: '<Trans>foo</Trans>' },
+    { code: '<Trans><span>bar</span></Trans>' }
   ],
 
   invalid: [
@@ -124,8 +121,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<div>FOO</div>', errors },
     { code: '<DIV foo="bar" />', errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
-    { code: '<button aria-label="Close" type="button" />', errors },
-    { code: '<div>foo</div>', options: [{ ignoreElement: ['span'] }], errors }
+    { code: '<button aria-label="Close" type="button" />', errors }
   ]
 });
 
