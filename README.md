@@ -236,3 +236,14 @@ Examples of correct code for the `{ "ignoreAttribute": ["foo"] }` option:
 /*eslint i18next/no-literal-string: ["error", { "ignoreAttribute": ["foo"] }]*/
 const element = <div foo="bar" />;
 ```
+
+#### ignoreProperty
+
+The `ignoreProperty` option specifies exceptions not to check for object properties that match one of ignored properties.
+
+Examples of correct code for the `{ "ignoreProperty": ["foo"] }` option:
+
+```jsx
+/*eslint i18next/no-literal-string: ["error", { "ignoreProperty": ["foo"] }]*/
+const a = { foo: 'bar' };
+```
