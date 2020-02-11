@@ -43,7 +43,7 @@ var bar = i18next.t('bar');
 var bar2 = i18n.t('bar');
 ```
 
-### Reudx/Vuex
+### Redux/Vuex
 
 This rule also works with those state managers like
 [Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
