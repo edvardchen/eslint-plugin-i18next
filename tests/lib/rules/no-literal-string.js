@@ -90,6 +90,7 @@ ruleTester.run('no-literal-string', rule, {
     },
     { code: '<div role="button"></div>' },
     { code: '<img src="./image.png" />' },
+    { code: '<A style="bar" />', errors },
     { code: '<button type="button" for="form-id" />' },
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] }
   ],

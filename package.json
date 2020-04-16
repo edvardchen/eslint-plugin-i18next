@@ -20,6 +20,7 @@
   "scripts": {
     "preversion": "npm run test",
     "postpublish": "git push --follow-tags",
+    "test:watch": "npm t -- --watch",
     "test": "mocha tests --recursive"
   },
   "dependencies": {
