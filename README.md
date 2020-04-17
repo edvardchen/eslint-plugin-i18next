@@ -4,8 +4,8 @@ ESLint plugin for i18n
 
 ## Installation
 
-```
-$ npm install eslint-plugin-i18next --save-dev
+```bash
+npm install eslint-plugin-i18next --save-dev
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ in those projects which need to support [multi-language](https://www.i18next.com
 
 ### Rule Details
 
-It will find out all literal strings and validate them.
+**It will find out all literal strings and validate them.**
 
 Examples of **incorrect** code for this rule:
 
@@ -124,7 +124,14 @@ Same for [Vue template](https://vuejs.org/v2/guide/syntax.html):
 </template>
 ```
 
-#### Redux/Vuex
+It would allow most reasonable usages of string that would rarely be shown to user, like following examples.
+
+Click on them to see details.
+
+<details>
+<summary>
+Redux/Vuex
+</summary>
 
 This rule also works with those state managers like
 [Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
@@ -132,21 +139,28 @@ This rule also works with those state managers like
 **Correct** code:
 
 ```js
-/*eslint i18next/no-literal-string: "error"*/
 var bar = store.dispatch('bar');
 var bar2 = store.commit('bar');
 ```
 
-#### Typescript
+</details>
 
-The following cases are **correct**:
+<details>
+<summary>
+Typescript
+</summary>
+
+This plugin would not complain on those reasonable usages of string.
+
+The following cases are considered as **correct**:
 
 ```typescript
-// skip TSLiteralType
 var a: Type['member'];
 var a: Omit<T, 'key'>;
-
-// skip literal with LiteralType
+enum E {
+  A = 1
+}
+var a = E['A'];
 var a: { t: 'button' } = { t: 'button' };
 var a: 'abc' | 'name' = 'abc';
 ```
@@ -164,9 +178,15 @@ See
 [here](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#usage)
 for more deteils.
 
-#### Import/Export
+</details>
 
-The following cases are **correct**:
+<details>
+
+<summary>
+Import/Export
+</summary>
+
+The following cases are **allowed**:
 
 ```typescript
 import mod from 'm';
@@ -177,7 +197,12 @@ export { named } from 'm';
 export * from 'm';
 ```
 
-#### Comparison
+</details>
+
+<details>
+<summary>
+String Comparison
+</summary>
 
 String comparison is fine.
 
@@ -186,7 +211,12 @@ String comparison is fine.
 name === 'Android' || name === 'iOS';
 ```
 
-#### SwithCase
+</details>
+
+<details>
+<summary>
+SwithCase
+</summary>
 
 Skip switchcase statement:
 
@@ -199,6 +229,8 @@ switch (type) {
     break;
 }
 ```
+
+</details>
 
 ### Options
 
