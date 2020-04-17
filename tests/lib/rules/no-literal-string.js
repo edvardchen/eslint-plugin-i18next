@@ -170,6 +170,7 @@ tsTester.run('no-literal-string', rule, {
     { code: `var a: 'abc' = 'abc'` },
     { code: `var a: 'abc' | 'name'  | undefined= 'abc'` },
     { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" },
+    { code: "enum T  {howard=1} ; var a = T['howard']" },
     { code: "function Button({ t= 'name'  }: {t: 'name'}){} " },
     { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" }
   ],
