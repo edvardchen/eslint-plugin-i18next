@@ -130,6 +130,22 @@ Click on them to see details.
 
 <details>
 <summary>
+react-i18next
+</summary>
+
+This plugin are compatible with [react-i18next](https://react.i18next.com/)
+
+```tsx
+// correct
+<Trans>
+  <span>bar</span>
+</Trans>
+```
+
+</details>
+
+<details>
+<summary>
 Redux/Vuex
 </summary>
 
