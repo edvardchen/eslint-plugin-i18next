@@ -250,6 +250,26 @@ switch (type) {
 
 ### Options
 
+### markupOnly
+
+If `markupOnly` option turn on, only JSX text and strings used as JSX attributes will be validated.
+
+JSX text:
+
+```jsx
+// incorrect
+<div>hello world</div>
+<div>{"hello world"}</div>
+```
+
+Strings as JSX attribute:
+
+```jsx
+// incorrect
+<div foo="foo"></div>
+<div foo={"foo"}></div>
+```
+
 #### ignore
 
 The `ignore` option specifies exceptions not to check for

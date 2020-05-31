@@ -90,11 +90,23 @@ ruleTester.run('no-literal-string', rule, {
     },
     { code: '<div role="button"></div>' },
     { code: '<img src="./image.png" />' },
-    { code: '<A style="bar" />', errors },
+    { code: '<A style="bar" />' },
     { code: '<button type="button" for="form-id" />' },
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
     { code: '<Trans>foo</Trans>' },
-    { code: '<Trans><span>bar</span></Trans>' }
+    { code: '<Trans><span>bar</span></Trans>' },
+    { code: 'a + "b"', options: [{ markupOnly: true }] },
+    { code: '<div>{import("abc")}</div>', options: [{ markupOnly: true }] },
+    {
+      code: '<div>{[].map(item=>"abc")}</div>',
+      options: [{ markupOnly: true }]
+    },
+    { code: '<div>{"hello" + "world"}</div>', options: [{ markupOnly: true }] },
+    { code: '<DIV foo="FOO" />', options: [{ markupOnly: true }] },
+    {
+      code: '<DIV foo="bar" />',
+      options: [{ markupOnly: true, ignoreAttribute: ['foo'] }]
+    }
   ],
 
   invalid: [
@@ -119,8 +131,16 @@ ruleTester.run('no-literal-string', rule, {
     },
     // JSX
     { code: '<div>foo</div>', errors },
+    { code: '<div>foo</div>', options: [{ markupOnly: true }], errors },
     { code: '<div>FOO</div>', errors },
+    {
+      code: '<div>{"hello world"}</div>',
+      options: [{ markupOnly: true }],
+      errors
+    },
     { code: '<DIV foo="bar" />', errors },
+    { code: '<DIV foo="bar" />', options: [{ markupOnly: true }], errors },
+    { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors }
   ]
