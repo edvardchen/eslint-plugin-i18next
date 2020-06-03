@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.7.0...v3.8.0) (2020-06-03)
+
+
+### Features
+
+* add markupOnly option ([7bb225c](https://github.com/edvardchen/eslint-plugin-i18next/commit/7bb225c))
+
 ## [3.7.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.6.0...v3.7.0) (2020-05-06)
 
 
