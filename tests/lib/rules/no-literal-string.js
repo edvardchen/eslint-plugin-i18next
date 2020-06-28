@@ -61,7 +61,15 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'store.commit("hello");' },
     { code: 'i18n.t("hello");' },
     { code: 'const a = "absfoo";', options: [{ ignore: ['foo'] }] },
-    { code: 'const a = "fooabc";', options: [{ ignore: ['^foo'] }] },
+    { code: 'const a = "fooabc";', options: [{ ignore: [/^foo/] }] },
+    {
+      code: 'foo.bar("taa");',
+      options: [
+        {
+          ignoreCallee: [/foo.+/]
+        }
+      ]
+    },
     { code: 'const a = "FOO";' },
     { code: 'var A_B = "world";' },
     { code: 'var a = {["A_B"]: "hello world"};' },
@@ -110,6 +118,7 @@ ruleTester.run('no-literal-string', rule, {
   ],
 
   invalid: [
+    { code: 'i18nextXt("taa");', errors },
     { code: 'a + "b"', errors },
     {
       code: "switch(a){ case 'a': var a ='b'; break; default: break;}",
