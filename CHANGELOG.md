@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.8.0...v4.0.0) (2020-06-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* all patterns in ignoreCallee would be treated as regular expression
+
+### Features
+
+* allow regex in ignore and ignoreCallee ([0cfe340](https://github.com/edvardchen/eslint-plugin-i18next/commit/0cfe340)), closes [#19](https://github.com/edvardchen/eslint-plugin-i18next/issues/19)
+
 ## [3.8.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v3.7.0...v3.8.0) (2020-06-03)
 
 
