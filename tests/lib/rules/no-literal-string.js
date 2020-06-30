@@ -147,6 +147,7 @@ ruleTester.run('no-literal-string', rule, {
       options: [{ markupOnly: true }],
       errors
     },
+    { code: '<div>フー</div>', errors },
     { code: '<DIV foo="bar" />', errors },
     { code: '<DIV foo="bar" />', options: [{ markupOnly: true }], errors },
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
