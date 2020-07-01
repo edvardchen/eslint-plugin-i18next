@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.1.0...v4.2.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* remove console ([f361e63](https://github.com/edvardchen/eslint-plugin-i18next/commit/f361e63))
+
+
+### Features
+
+* allow ignoring lists of components ([eebb338](https://github.com/edvardchen/eslint-plugin-i18next/commit/eebb338))
+
 ## [4.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.0.0...v4.1.0) (2020-06-30)
 
 
