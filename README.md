@@ -315,3 +315,14 @@ Examples of correct code for the `{ "ignoreProperty": ["foo"] }` option:
 /*eslint i18next/no-literal-string: ["error", { "ignoreProperty": ["foo"] }]*/
 const a = { foo: 'bar' };
 ```
+
+#### ignoreComponent
+
+The `ignoreComponent` option specifies exceptions not to check for string literals inside a list of named components. It includes `<Trans>` per default.
+
+Examples of correct code for the `{ "ignoreComponent": ["Icon"] }` option:
+
+```jsx
+/*eslint i18next/no-literal-string: ["error", { "ignoreComponent": ["Icon"] }]*/
+<Icon>arrow<Icon/>
+```

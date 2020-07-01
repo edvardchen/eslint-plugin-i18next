@@ -103,6 +103,8 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
     { code: '<Trans>foo</Trans>' },
     { code: '<Trans><span>bar</span></Trans>' },
+    { code: '<Trans>foo</Trans>', options: [{ ignoreComponent: ['Icon'] }] },
+    { code: '<Icon>arrow</Icon>', options: [{ ignoreComponent: ['Icon'] }] },
     { code: 'a + "b"', options: [{ markupOnly: true }] },
     { code: '<div>{import("abc")}</div>', options: [{ markupOnly: true }] },
     {
