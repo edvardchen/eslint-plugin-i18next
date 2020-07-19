@@ -116,7 +116,10 @@ ruleTester.run('no-literal-string', rule, {
     {
       code: '<DIV foo="bar" />',
       options: [{ markupOnly: true, ignoreAttribute: ['foo'] }]
-    }
+    },
+    // when onlyAttribute was configured, the markOnly would be treated as true
+    { code: 'const a = "foo";', options: [{ onlyAttribute: ['bar'] }] },
+    { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] }
   ],
 
   invalid: [
