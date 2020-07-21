@@ -270,6 +270,23 @@ Strings as JSX attribute:
 <div foo={"foo"}></div>
 ```
 
+### onlyAttribute
+
+Only check the `JSX` attributes that listed in this option. **This option would turn on `markupOnly`.**
+
+```jsx
+// correct
+const foo = 'bar';
+<div foo="foo"></div>
+
+// incorrect
+<div>foo</div>
+
+/*eslint i18next/no-literal-string: ["error", {"onlyAttribute": ["foo"]}]*/
+// incorrect
+<div foo="foo"></div>
+```
+
 #### ignore
 
 The `ignore` option specifies exceptions not to check for
