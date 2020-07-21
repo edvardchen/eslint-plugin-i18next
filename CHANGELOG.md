@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.2.0...v4.3.0) (2020-07-21)
+
+
+### Features
+
+* add onlyAttribute option ([7ebf98b](https://github.com/edvardchen/eslint-plugin-i18next/commit/7ebf98b)), closes [#25](https://github.com/edvardchen/eslint-plugin-i18next/issues/25)
+
 ## [4.2.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.1.0...v4.2.0) (2020-07-01)
 
 
