@@ -121,10 +121,31 @@ ruleTester.run('no-literal-string', rule, {
     },
     // when onlyAttribute was configured, the markOnly would be treated as true
     { code: 'const a = "foo";', options: [{ onlyAttribute: ['bar'] }] },
-    { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] }
+    { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] },
+    {
+      code: 'var a = `hello world`'
+    },
+    {
+      code: 'var a = `12345`',
+      options: [{ validateTemplate: true }]
+    },
+    {
+      code: 'var a = ``',
+      options: [{ validateTemplate: true }]
+    }
   ],
 
   invalid: [
+    {
+      code: 'var a = `hello ${abc} world`',
+      options: [{ validateTemplate: true }],
+      errors
+    },
+    {
+      code: 'var a = `hello world`',
+      options: [{ validateTemplate: true }],
+      errors
+    },
     { code: 'i18nextXt("taa");', errors },
     { code: 'a + "b"', errors },
     {
