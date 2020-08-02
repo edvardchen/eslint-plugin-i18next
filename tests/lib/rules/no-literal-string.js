@@ -73,6 +73,7 @@ ruleTester.run('no-literal-string', rule, {
     },
     { code: 'const a = "FOO";' },
     { code: 'var A_B = "world";' },
+    { code: 'var A_B = ["world"];' },
     { code: 'var a = {["A_B"]: "hello world"};' },
     { code: 'var a = {[A_B]: "hello world"};' },
     { code: 'var a = {A_B: "hello world"};' },
