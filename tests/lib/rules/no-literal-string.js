@@ -30,6 +30,7 @@ var ruleTester = new RuleTester({
 ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import("hello")' },
+    { code: 'function bar(a="jianhua"){}' },
     { code: "name === 'Android' || name === 'iOS'" },
     { code: "switch(a){ case 'a': break; default: break;}" },
     { code: 'import name from "hello";' },
@@ -215,15 +216,6 @@ tsTester.run('no-literal-string', rule, {
     {
       code: `<button className={styles.btn}>loading</button>`,
       filename: 'a.tsx',
-      errors
-    },
-
-    {
-      code: "function Button({ t= 'name'  }: {t: 'name' &  'abc'}){} ",
-      errors
-    },
-    {
-      code: "function Button({ t= 'name'  }: {t: 1 |  'abc'}){} ",
       errors
     },
     { code: "var a: {type: string} = {type: 'bb'}", errors }
