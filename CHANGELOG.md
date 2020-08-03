@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.3.0...v4.4.0) (2020-08-03)
+
+
+### Bug Fixes
+
+* misuse typescript ([72bd375](https://github.com/edvardchen/eslint-plugin-i18next/commit/72bd375)), closes [#27](https://github.com/edvardchen/eslint-plugin-i18next/issues/27)
+
+
+### Features
+
+* ignore UPPER_CASE arrays ([0d7a69a](https://github.com/edvardchen/eslint-plugin-i18next/commit/0d7a69a)), closes [#12](https://github.com/edvardchen/eslint-plugin-i18next/issues/12)
+
 ## [4.3.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.2.0...v4.3.0) (2020-07-21)
 
 
