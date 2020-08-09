@@ -343,3 +343,13 @@ Examples of correct code for the `{ "ignoreComponent": ["Icon"] }` option:
 /*eslint i18next/no-literal-string: ["error", { "ignoreComponent": ["Icon"] }]*/
 <Icon>arrow<Icon/>
 ```
+
+#### validateTemplate
+
+Indicate whether to validate [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) or not. Default `false`
+
+```js
+/*eslint i18next/no-literal-string: ["error", { "validateTemplate": true }]*/
+// incorrect
+var foo = `hello world`;
+```
