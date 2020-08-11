@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.4.0...v4.5.0) (2020-08-11)
+
+
+### Features
+
+* add option validateTemplate ([ba0ec60](https://github.com/edvardchen/eslint-plugin-i18next/commit/ba0ec60))
+
 ## [4.4.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.3.0...v4.4.0) (2020-08-03)
 
 
