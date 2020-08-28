@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0-0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.5.0...v5.0.0-0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* maybe break in some cases although all test cases passed
+
+* reuse all rules to template literal ([b5cdda6](https://github.com/edvardchen/eslint-plugin-i18next/commit/b5cdda6)), closes [#20](https://github.com/edvardchen/eslint-plugin-i18next/issues/20)
+
 ## [4.5.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v4.4.0...v4.5.0) (2020-08-11)
 
 
