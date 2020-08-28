@@ -23,13 +23,14 @@ var ruleTester = new RuleTester({
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
-  }
+      jsx: true,
+    },
+  },
 });
 ruleTester.run('no-literal-string', rule, {
   valid: [
     { code: 'import("hello")' },
+    { code: 'import(`hello`)', options: [{ validateTemplate: true }] },
     { code: 'function bar(a="jianhua"){}' },
     { code: "name === 'Android' || name === 'iOS'" },
     { code: "switch(a){ case 'a': break; default: break;}" },
@@ -42,11 +43,11 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'export { a } from "hello_export";' },
     {
       code:
-        'document.addEventListener("click", (event) => { event.preventDefault() })'
+        'document.addEventListener("click", (event) => { event.preventDefault() })',
     },
     {
       code:
-        'document.removeEventListener("click", (event) => { event.preventDefault() })'
+        'document.removeEventListener("click", (event) => { event.preventDefault() })',
     },
     { code: 'window.postMessage("message", "*")' },
     { code: 'document.getElementById("some-id")' },
@@ -67,11 +68,13 @@ ruleTester.run('no-literal-string', rule, {
       code: 'foo.bar("taa");',
       options: [
         {
-          ignoreCallee: [/foo.+/]
-        }
-      ]
+          ignoreCallee: [/foo.+/],
+        },
+      ],
     },
     { code: 'const a = "FOO";' },
+    { code: 'const a = `FOO`;' },
+    { code: 'var A_B = `world`;' },
     { code: 'var A_B = "world";' },
     { code: 'var A_B = ["world"];' },
     { code: 'var a = {["A_B"]: "hello world"};' },
@@ -89,14 +92,14 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<path d="M10 10" />' },
     {
       code:
-        '<circle width="16px" height="16px" cx="10" cy="10" r="2" fill="red" />'
+        '<circle width="16px" height="16px" cx="10" cy="10" r="2" fill="red" />',
     },
     {
       code:
-        '<a href="https://google.com" target="_blank" rel="noreferrer noopener"></a>'
+        '<a href="https://google.com" target="_blank" rel="noreferrer noopener"></a>',
     },
     {
-      code: '<div id="some-id" tabIndex="0" aria-labelledby="label-id"></div>'
+      code: '<div id="some-id" tabIndex="0" aria-labelledby="label-id"></div>',
     },
     { code: '<div role="button"></div>' },
     { code: '<img src="./image.png" />' },
@@ -111,46 +114,46 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<div>{import("abc")}</div>', options: [{ markupOnly: true }] },
     {
       code: '<div>{[].map(item=>"abc")}</div>',
-      options: [{ markupOnly: true }]
+      options: [{ markupOnly: true }],
     },
     { code: '<div>{"hello" + "world"}</div>', options: [{ markupOnly: true }] },
     { code: '<DIV foo="FOO" />', options: [{ markupOnly: true }] },
     {
       code: '<DIV foo="bar" />',
-      options: [{ markupOnly: true, ignoreAttribute: ['foo'] }]
+      options: [{ markupOnly: true, ignoreAttribute: ['foo'] }],
     },
     // when onlyAttribute was configured, the markOnly would be treated as true
     { code: 'const a = "foo";', options: [{ onlyAttribute: ['bar'] }] },
     { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] },
     {
-      code: 'var a = `hello world`'
+      code: 'var a = `hello world`',
     },
     {
       code: 'var a = `12345`',
-      options: [{ validateTemplate: true }]
+      options: [{ validateTemplate: true }],
     },
     {
       code: 'var a = ``',
-      options: [{ validateTemplate: true }]
-    }
+      options: [{ validateTemplate: true }],
+    },
   ],
 
   invalid: [
     {
       code: 'var a = `hello ${abc} world`',
       options: [{ validateTemplate: true }],
-      errors
+      errors,
     },
     {
       code: 'var a = `hello world`',
       options: [{ validateTemplate: true }],
-      errors
+      errors,
     },
     { code: 'i18nextXt("taa");', errors },
     { code: 'a + "b"', errors },
     {
       code: "switch(a){ case 'a': var a ='b'; break; default: break;}",
-      errors
+      errors,
     },
     { code: 'export const a = "hello_string";', errors },
     { code: 'const a = "foo";', errors },
@@ -160,11 +163,11 @@ ruleTester.run('no-literal-string', rule, {
     {
       code: 'var a = {foo: "foo"};',
       options: [{ ignoreProperty: ['bar'] }],
-      errors
+      errors,
     },
     {
       code: 'class Form extends Component { property = "Something" };',
-      errors
+      errors,
     },
     // JSX
     { code: '<div>foo</div>', errors },
@@ -173,15 +176,15 @@ ruleTester.run('no-literal-string', rule, {
     {
       code: '<div>{"hello world"}</div>',
       options: [{ markupOnly: true }],
-      errors
+      errors,
     },
     { code: '<div>フー</div>', errors },
     { code: '<DIV foo="bar" />', errors },
     { code: '<DIV foo="bar" />', options: [{ markupOnly: true }], errors },
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
-    { code: '<button aria-label="Close" type="button" />', errors }
-  ]
+    { code: '<button aria-label="Close" type="button" />', errors },
+  ],
 });
 
 //
@@ -191,22 +194,26 @@ ruleTester.run('no-literal-string', rule, {
 const vueTester = new RuleTester({
   parser: 'vue-eslint-parser',
   parserOptions: {
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 
 vueTester.run('no-literal-string', rule, {
   valid: [{ code: '<template>{{ i18next.t("abc") }}</template>' }],
   invalid: [
     {
+      code: '<template>{{ a("abc") }}</template>',
+      errors,
+    },
+    {
       code: '<template>abc</template>',
-      errors
+      errors,
     },
     {
       code: '<template>{{"hello"}}</template>',
-      errors
-    }
-  ]
+      errors,
+    },
+  ],
 });
 // ────────────────────────────────────────────────────────────────────────────────
 
@@ -218,8 +225,8 @@ const tsTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    project: path.resolve(__dirname, 'tsconfig.json')
-  }
+    project: path.resolve(__dirname, 'tsconfig.json'),
+  },
 });
 
 tsTester.run('no-literal-string', rule, {
@@ -232,15 +239,15 @@ tsTester.run('no-literal-string', rule, {
     { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" },
     { code: "enum T  {howard=1} ; var a = T['howard']" },
     { code: "function Button({ t= 'name'  }: {t: 'name'}){} " },
-    { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" }
+    { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" },
   ],
   invalid: [
     {
       code: `<button className={styles.btn}>loading</button>`,
       filename: 'a.tsx',
-      errors
+      errors,
     },
-    { code: "var a: {type: string} = {type: 'bb'}", errors }
-  ]
+    { code: "var a: {type: string} = {type: 'bb'}", errors },
+  ],
 });
 // ────────────────────────────────────────────────────────────────────────────────
