@@ -172,6 +172,7 @@ ruleTester.run('no-literal-string', rule, {
     // JSX
     { code: '<div>foo</div>', errors },
     { code: '<div>foo</div>', options: [{ markupOnly: true }], errors },
+    { code: '<>foo999</>', options: [{ markupOnly: true }], errors },
     { code: '<div>FOO</div>', errors },
     {
       code: '<div>{"hello world"}</div>',
@@ -242,6 +243,12 @@ tsTester.run('no-literal-string', rule, {
     { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" },
   ],
   invalid: [
+    {
+      code: '<>foo999</>',
+      filename: 'a.tsx',
+      options: [{ markupOnly: true }],
+      errors,
+    },
     {
       code: `<button className={styles.btn}>loading</button>`,
       filename: 'a.tsx',
