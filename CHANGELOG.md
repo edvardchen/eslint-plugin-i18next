@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.0.0...v5.1.0) (2021-03-28)
+
+
+### Features
+
+* ignore module declaration ([97c0c34](https://github.com/edvardchen/eslint-plugin-i18next/commit/97c0c34)), closes [#41](https://github.com/edvardchen/eslint-plugin-i18next/issues/41)
+
 ## [5.0.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.0.0-1...v5.0.0) (2020-09-17)
 
 
