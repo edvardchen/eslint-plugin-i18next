@@ -232,6 +232,7 @@ const tsTester = new RuleTester({
 
 tsTester.run('no-literal-string', rule, {
   valid: [
+    { code: `declare module 'country-emoji' {}` },
     { code: '<div className="hello"></div>', filename: 'a.tsx' },
     { code: "var a: Element['nodeName']" },
     { code: "var a: Omit<T, 'af'>" },
