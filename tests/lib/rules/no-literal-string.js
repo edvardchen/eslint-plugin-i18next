@@ -19,7 +19,7 @@ const message = 'disallow literal string';
 const errors = [{ message }]; // default errors
 
 var ruleTester = new RuleTester({
-  parser: 'babel-eslint',
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
@@ -80,6 +80,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'var a = {["A_B"]: "hello world"};' },
     { code: 'var a = {[A_B]: "hello world"};' },
     { code: 'var a = {A_B: "hello world"};' },
+    { code: 'var a = {"foo": 123 };' },
     { code: 'var a = {foo: "FOO"};' },
     { code: 'var a = {foo: "foo"};', options: [{ ignoreProperty: ['foo'] }] },
     { code: 'class Form extends Component { displayName = "FormContainer" };' },
@@ -193,7 +194,7 @@ ruleTester.run('no-literal-string', rule, {
 //
 
 const vueTester = new RuleTester({
-  parser: 'vue-eslint-parser',
+  parser: require.resolve('vue-eslint-parser'),
   parserOptions: {
     sourceType: 'module',
   },
@@ -223,7 +224,7 @@ vueTester.run('no-literal-string', rule, {
 //
 
 const tsTester = new RuleTester({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     sourceType: 'module',
     project: path.resolve(__dirname, 'tsconfig.json'),
