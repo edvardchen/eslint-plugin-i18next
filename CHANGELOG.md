@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.1.0...v5.1.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* ignore strings as object property name ([e70bb8f](https://github.com/edvardchen/eslint-plugin-i18next/commit/e70bb8f)), closes [#42](https://github.com/edvardchen/eslint-plugin-i18next/issues/42)
+
 ## [5.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.0.0...v5.1.0) (2021-03-28)
 
 
