@@ -186,6 +186,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors },
+    { code: 'var a = Math.random()>0.5?"hello":123;', errors },
   ],
 });
 
@@ -257,6 +258,10 @@ tsTester.run('no-literal-string', rule, {
       errors,
     },
     { code: "var a: {type: string} = {type: 'bb'}", errors },
+    {
+      code: 'var a = Math.random()>0.5?"hello":123;',
+      errors,
+    },
   ],
 });
 // ────────────────────────────────────────────────────────────────────────────────
