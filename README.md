@@ -322,6 +322,17 @@ Examples of correct code for the `{ "ignoreAttribute": ["foo"] }` option:
 const element = <div foo="bar" />;
 ```
 
+### ignoreComponentAttribute
+
+The `ignoreComponentAttribute` option specifies specific object attributes to ignore.
+
+Examples of correct code for the `{ "ignoreComponentAttribute": [{ name: "img", "attribute": "alt" }] }`:
+
+```jsx
+/*eslint i18next/no-literal-string: ["error", { "ignoreComponentAttribute": [{ name: "div", "attribute": "foo" }] }]*/
+const element = <div foo="bar" />;
+```
+
 #### ignoreProperty
 
 The `ignoreProperty` option specifies exceptions not to check for object properties that match one of ignored properties.
