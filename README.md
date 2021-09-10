@@ -326,10 +326,10 @@ const element = <div foo="bar" />;
 
 The `ignoreComponentAttribute` option specifies specific object attributes to ignore.
 
-Examples of correct code for the `{ "ignoreComponentAttribute": [{ name: "div", "attribute": "foo" }] }`:
+Examples of correct code for the `{ "ignoreComponentAttribute": [{ name: "div", "attributes": ["foo"] }] }`:
 
 ```jsx
-/*eslint i18next/no-literal-string: ["error", { "ignoreComponentAttribute": [{ name: "div", "attribute": "foo" }] }]*/
+/*eslint i18next/no-literal-string: ["error", { "ignoreComponentAttribute": [{ name: "div", "attributes": ["foo"] }] }]*/
 const element = <div foo="bar" />;
 ```
 
