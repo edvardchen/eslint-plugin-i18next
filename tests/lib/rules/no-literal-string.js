@@ -65,6 +65,14 @@ const usual = {
     { code: 'const a = "absfoo";', options: [{ ignore: ['foo'] }] },
     { code: 'const a = "fooabc";', options: [{ ignore: [/^foo/] }] },
     {
+      code: 'new Error("hello")',
+      options: [
+        {
+          ignoreCallee: ['Error'],
+        },
+      ],
+    },
+    {
       code: 'foo.bar("taa");',
       options: [
         {
