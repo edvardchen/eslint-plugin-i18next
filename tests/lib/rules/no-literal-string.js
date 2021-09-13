@@ -174,6 +174,7 @@ const jsx = {
       options: [{ markupOnly: true, ignoreAttribute: ['foo'] }],
     },
     { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] },
+    { code: '<Component foo="bar" />', options: [{ ignoreComponentAttribute: [{ name: 'Component', attributes: ['foo'] }] }] },
   ],
   invalid: [
     { code: '<div>foo</div>', errors },
@@ -191,6 +192,7 @@ const jsx = {
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors },
+    { code: '<Component foo="bar" />', options: [{ ignoreComponentAttribute: [{ name: 'Component', attributes: ['otherFoo'] }] }], errors },
   ],
 };
 ruleTester.run('no-literal-string', rule, usual);
@@ -206,6 +208,7 @@ const vueTester = new RuleTester({
     sourceType: 'module',
   },
 });
+
 
 vueTester.run('no-literal-string', rule, {
   valid: [{ code: '<template>{{ i18next.t("abc") }}</template>' }],
@@ -224,6 +227,7 @@ vueTester.run('no-literal-string', rule, {
     },
   ],
 });
+
 // ────────────────────────────────────────────────────────────────────────────────
 
 //
@@ -239,6 +243,7 @@ const tsTester = new RuleTester({
 });
 
 tsTester.run('no-literal-string', rule, usual);
+
 tsTester.run(
   'no-literal-string',
   rule,
@@ -253,6 +258,8 @@ tsTester.run(
     {}
   )
 );
+
+
 
 tsTester.run('no-literal-string', rule, {
   valid: [
@@ -280,4 +287,5 @@ tsTester.run('no-literal-string', rule, {
     { code: "var a: {type: string} = {type: 'bb'}", errors },
   ],
 });
+
 // ────────────────────────────────────────────────────────────────────────────────
