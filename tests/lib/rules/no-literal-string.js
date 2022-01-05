@@ -166,6 +166,10 @@ const jsx = {
     { code: '<A style="bar" />' },
     { code: '<button type="button" for="form-id" />' },
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
+    {
+      code: '<DIV fooabc="fooabc" />',
+      options: [{ ignoreAttribute: [/foo.+/] }],
+    },
     { code: '<Trans>foo</Trans>' },
     { code: '<Trans><span>bar</span></Trans>' },
     { code: '<Trans>foo</Trans>', options: [{ ignoreComponent: ['Icon'] }] },
@@ -199,6 +203,11 @@ const jsx = {
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors },
+    {
+      code: '<DIV foo="fooabc" />',
+      options: [{ ignoreAttribute: [/foo.+/] }],
+      errors,
+    },
   ],
 };
 ruleTester.run('no-literal-string', rule, usual);
