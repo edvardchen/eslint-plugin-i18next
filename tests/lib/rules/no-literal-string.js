@@ -139,6 +139,11 @@ const usual = {
       code: 'class Form extends Component { property = "Something" };',
       errors,
     },
+    {
+      code: 'export const a = "hello_string";',
+      options: [{ message: 'Some error message' }],
+      errors: [{ message: 'Some error message' }],
+    },
   ],
 };
 
@@ -199,6 +204,11 @@ const jsx = {
     { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
     { code: '<img src="./image.png" alt="some-image" />', errors },
     { code: '<button aria-label="Close" type="button" />', errors },
+    {
+      code: '<div>{"hello world"}</div>',
+      options: [{ markupOnly: true, message: 'Some error message' }],
+      errors: [{ message: 'Some error message' }],
+    },
   ],
 };
 ruleTester.run('no-literal-string', rule, usual);
@@ -279,6 +289,12 @@ tsTester.run('no-literal-string', rule, {
       filename: 'a.tsx',
       options: [{ markupOnly: true }],
       errors,
+    },
+    {
+      code: '<>foo999</>',
+      filename: 'a.tsx',
+      options: [{ markupOnly: true, message: 'Some error message' }],
+      errors: [{ message: 'Some error message' }],
     },
     {
       code: `<button className={styles.btn}>loading</button>`,
