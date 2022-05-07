@@ -39,7 +39,7 @@
   },
   "object-properties": {
     "include": [],
-    "exclude": []
+    "exclude": ["[A-Z_-]+"]
   },
   "class-properties": {
     "include": [],

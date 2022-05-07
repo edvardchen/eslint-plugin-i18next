@@ -8,6 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
+const fs = require('fs');
 var rule = require('../../../lib/rules/no-literal-string'),
   RuleTester = require('eslint').RuleTester,
   path = require('path');
@@ -29,39 +30,11 @@ var ruleTester = new RuleTester({
 });
 ruleTester.run('no-literal-string', rule, {
   valid: [
-    { code: 'import("hello")' },
-    { code: 'import(`hello`)', options: [{ validateTemplate: true }] },
-    { code: 'function bar(a="jianhua"){}' },
-    { code: "name === 'Android' || name === 'iOS'" },
-    { code: "switch(a){ case 'a': break; default: break;}" },
-    { code: 'import name from "hello";' },
-    { code: 'a.indexOf("ios")' },
-    { code: 'a.includes("ios")' },
-    { code: 'a.startsWith("ios")' },
-    { code: 'a.endsWith("@gmail.com")' },
-    { code: 'export * from "hello_export_all";' },
-    { code: 'export { a } from "hello_export";' },
     {
-      code:
-        'document.addEventListener("click", (event) => { event.preventDefault() })',
+      code: fs.readFileSync(__dirname + '/fixtures/valid.js', {
+        encoding: 'utf8',
+      }),
     },
-    {
-      code:
-        'document.removeEventListener("click", (event) => { event.preventDefault() })',
-    },
-    { code: 'window.postMessage("message", "*")' },
-    { code: 'document.getElementById("some-id")' },
-    { code: 'require("hello");' },
-    { code: 'const a = require(["hello"]);' },
-    { code: 'const a = require(["hel" + "lo"]);' },
-    { code: 'const a = 1;' },
-    { code: 'const a = "?";' },
-    { code: `const a = "0123456789!@#$%^&*()_+|~-=\`[]{};':\\",./<>?";` },
-    { code: 'i18n("hello");' },
-    { code: 'dispatch("hello");' },
-    { code: 'store.dispatch("hello");' },
-    { code: 'store.commit("hello");' },
-    { code: 'i18n.t("hello");' },
     {
       code: 'const a = "absfoo";',
       options: [{ words: { exclude: ['.*foo.*'] } }],
@@ -72,61 +45,27 @@ ruleTester.run('no-literal-string', rule, {
     },
     {
       code: 'foo.bar("taa");',
-      options: [
-        {
-          callees: {
-            exclude: ['foo.+'],
-          },
-        },
-      ],
+      options: [{ callees: { exclude: ['foo.+'] } }],
     },
-    { code: 'const a = "FOO";' },
-    { code: 'const a = `FOO`;' },
-    { code: 'var A_B = `world`;' },
-    { code: 'var A_B = "world";' },
-    { code: 'var A_B = ["world"];' },
-    { code: 'var a = {["A_B"]: "hello world"};' },
-    { code: 'var a = {[A_B]: "hello world"};' },
-    { code: 'var a = {A_B: "hello world"};' },
-    { code: 'var a = {"foo": 123 };' },
-    { code: 'var a = {foo: "FOO"};' },
     { code: 'var a = {foo: "foo"};', options: [{ ignoreProperty: ['foo'] }] },
-    { code: 'class Form extends Component { displayName = "FormContainer" };' },
     // JSX
-    { code: '<div className="primary"></div>' },
-    { code: '<div className={a ? "active": "inactive"}></div>' },
-    { code: '<div>{i18next.t("foo")}</div>' },
-    { code: '<svg viewBox="0 0 20 40"></svg>' },
-    { code: '<line x1="0" y1="0" x2="10" y2="20" />' },
-    { code: '<path d="M10 10" />' },
     {
-      code:
-        '<circle width="16px" height="16px" cx="10" cy="10" r="2" fill="red" />',
+      code: fs.readFileSync(__dirname + '/fixtures/valid.jsx', {
+        encoding: 'utf8',
+      }),
     },
-    {
-      code:
-        '<a href="https://google.com" target="_blank" rel="noreferrer noopener"></a>',
-    },
-    {
-      code: '<div id="some-id" tabIndex="0" aria-labelledby="label-id"></div>',
-    },
-    { code: '<div role="button"></div>' },
-    { code: '<img src="./image.png" />' },
-    { code: '<A style="bar" />' },
-    { code: '<button type="button" for="form-id" />' },
     { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
-    { code: '<Trans>foo</Trans>' },
-    { code: '<Trans><span>bar</span></Trans>' },
     { code: '<Trans>foo</Trans>', options: [{ ignoreComponent: ['Icon'] }] },
     { code: '<Icon>arrow</Icon>', options: [{ ignoreComponent: ['Icon'] }] },
-    { code: 'a + "b"', options: [{ markupOnly: true }] },
-    { code: '<div>{import("abc")}</div>', options: [{ markupOnly: true }] },
     {
-      code: '<div>{[].map(item=>"abc")}</div>',
+      code: `a + "b"
+const c = <div>{import("abc")}</div>
+const d = <div>{[].map(item=>"abc")}</div>
+const e = <div>{"hello" + "world"}</div>
+const f = <DIV foo="FOO" />
+    `,
       options: [{ markupOnly: true }],
     },
-    { code: '<div>{"hello" + "world"}</div>', options: [{ markupOnly: true }] },
-    { code: '<DIV foo="FOO" />', options: [{ markupOnly: true }] },
     {
       code: '<DIV foo="bar" />',
       options: [{ markupOnly: true, ignoreAttribute: ['foo'] }],
@@ -135,19 +74,21 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = "foo";', options: [{ onlyAttribute: ['bar'] }] },
     { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] },
     {
-      code: 'var a = `hello world`',
-    },
-    {
-      code: 'var a = `12345`',
-      options: [{ validateTemplate: true }],
-    },
-    {
-      code: 'var a = ``',
+      code: `import(\`hello\`);
+            var a = \`12345\`
+            var a = \`\`
+      `,
       options: [{ validateTemplate: true }],
     },
   ],
 
   invalid: [
+    {
+      code: fs.readFileSync(__dirname + '/fixtures/invalid.js', {
+        encoding: 'utf8',
+      }),
+      errors: 8,
+    },
     {
       code: 'var a = `hello ${abc} world`',
       options: [{ validateTemplate: true }],
@@ -158,16 +99,6 @@ ruleTester.run('no-literal-string', rule, {
       options: [{ validateTemplate: true }],
       errors,
     },
-    { code: 'i18nextXt("taa");', errors },
-    { code: 'a + "b"', errors },
-    {
-      code: "switch(a){ case 'a': var a ='b'; break; default: break;}",
-      errors,
-    },
-    { code: 'export const a = "hello_string";', errors },
-    { code: 'const a = "foo";', errors },
-    { code: 'const a = call("Ffo");', errors },
-    { code: 'var a = {foo: "bar"};', errors },
     {
       code: 'const a = "afoo";',
       options: [{ words: { exclude: ['^foo'] } }],
@@ -176,10 +107,6 @@ ruleTester.run('no-literal-string', rule, {
     {
       code: 'var a = {foo: "foo"};',
       options: [{ ignoreProperty: ['bar'] }],
-      errors,
-    },
-    {
-      code: 'class Form extends Component { property = "Something" };',
       errors,
     },
     // JSX
