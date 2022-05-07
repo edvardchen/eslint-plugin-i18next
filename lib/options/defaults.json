@@ -45,6 +45,6 @@
     "include": [],
     "exclude": ["displayName"]
   },
-  "message": "",
+  "message": "disallow literal string",
   "should-validate-template": false
 }
