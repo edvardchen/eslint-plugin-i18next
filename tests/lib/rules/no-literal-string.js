@@ -62,8 +62,14 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'store.dispatch("hello");' },
     { code: 'store.commit("hello");' },
     { code: 'i18n.t("hello");' },
-    { code: 'const a = "absfoo";', options: [{ ignore: ['foo'] }] },
-    { code: 'const a = "fooabc";', options: [{ ignore: [/^foo/] }] },
+    {
+      code: 'const a = "absfoo";',
+      options: [{ words: { exclude: ['.*foo.*'] } }],
+    },
+    {
+      code: 'const a = "fooabc";',
+      options: [{ words: { exclude: ['^foo.*'] } }],
+    },
     {
       code: 'foo.bar("taa");',
       options: [
@@ -162,7 +168,11 @@ ruleTester.run('no-literal-string', rule, {
     { code: 'const a = "foo";', errors },
     { code: 'const a = call("Ffo");', errors },
     { code: 'var a = {foo: "bar"};', errors },
-    { code: 'const a = "afoo";', options: [{ ignore: ['^foo'] }], errors },
+    {
+      code: 'const a = "afoo";',
+      options: [{ words: { exclude: ['^foo'] } }],
+      errors,
+    },
     {
       code: 'var a = {foo: "foo"};',
       options: [{ ignoreProperty: ['bar'] }],
@@ -176,7 +186,7 @@ ruleTester.run('no-literal-string', rule, {
     { code: '<div>foo</div>', errors },
     { code: '<div>foo</div>', options: [{ markupOnly: true }], errors },
     { code: '<>foo999</>', options: [{ markupOnly: true }], errors },
-    { code: '<div>FOO</div>', errors },
+    // { code: '<div>FOO</div>', errors },
     {
       code: '<div>{"hello world"}</div>',
       options: [{ markupOnly: true }],
