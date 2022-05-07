@@ -172,7 +172,7 @@ tsTester.run('no-literal-string', rule, {
     {
       code: '<>foo123</>',
       filename: 'a.tsx',
-      options: [{ markupOnly: true }],
+      options: [{ mode: 'jsx-text-only' }],
       errors,
     },
     {
