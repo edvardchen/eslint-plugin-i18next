@@ -57,30 +57,34 @@ ruleTester.run('no-literal-string', rule, {
         encoding: 'utf8',
       }),
     },
-    { code: '<DIV foo="bar" />', options: [{ ignoreAttribute: ['foo'] }] },
+    {
+      code: '<DIV foo="bar" />',
+      options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
+    },
     { code: '<Trans>foo</Trans>', options: [{ ignoreComponent: ['Icon'] }] },
     { code: '<Icon>arrow</Icon>', options: [{ ignoreComponent: ['Icon'] }] },
     {
       code: `a + "b"
-const c = <div>{import("abc")}</div>
-const d = <div>{[].map(item=>"abc")}</div>
-const e = <div>{"hello" + "world"}</div>
-const f = <DIV foo="FOO" />
-    `,
+    const c = <div>{import("abc")}</div>
+    const d = <div>{[].map(item=>"abc")}</div>
+    const e = <div>{"hello" + "world"}</div>
+    const f = <DIV foo="FOO" />
+        `,
       options: [{ markupOnly: true }],
     },
     {
-      code: '<DIV foo="bar" />',
-      options: [{ markupOnly: true, ignoreAttribute: ['foo'] }],
+      code: '<DIV foo="bar1" />',
+      options: [{ markupOnly: true, 'jsx-attributes': { exclude: ['foo'] } }],
     },
-    // when onlyAttribute was configured, the markOnly would be treated as true
-    { code: 'const a = "foo";', options: [{ onlyAttribute: ['bar'] }] },
-    { code: '<DIV foo="bar" />', options: [{ onlyAttribute: ['bar'] }] },
+    {
+      code: '<DIV foo="bar2" />',
+      options: [{ 'jsx-attributes': { include: ['bar'] } }],
+    },
     {
       code: `import(\`hello\`);
-            var a = \`12345\`
-            var a = \`\`
-      `,
+                var a = \`12345\`
+                var a = \`\`
+          `,
       options: [{ validateTemplate: true }],
     },
   ],
@@ -175,7 +179,9 @@ const tsTester = new RuleTester({
 
 tsTester.run('no-literal-string', rule, {
   valid: [
-    { code: `declare module 'country-emoji' {}` },
+    {
+      code: `declare module 'country-emoji' {}`,
+    },
     { code: '<div className="hello"></div>', filename: 'a.tsx' },
     { code: "var a: Element['nodeName']" },
     { code: "var a: Omit<T, 'af'>" },
