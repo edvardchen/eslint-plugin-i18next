@@ -47,7 +47,10 @@ ruleTester.run('no-literal-string', rule, {
       code: 'foo.bar("taa");',
       options: [{ callees: { exclude: ['foo.+'] } }],
     },
-    { code: 'var a = {foo: "foo"};', options: [{ ignoreProperty: ['foo'] }] },
+    {
+      code: 'var a = {foo: "foo"};',
+      options: [{ 'object-properties': { exclude: ['foo'] } }],
+    },
     // JSX
     {
       code: fs.readFileSync(__dirname + '/fixtures/valid.jsx', {
