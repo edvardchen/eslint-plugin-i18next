@@ -61,8 +61,14 @@ ruleTester.run('no-literal-string', rule, {
       code: '<DIV foo="bar" />',
       options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
     },
-    { code: '<Trans>foo</Trans>', options: [{ ignoreComponent: ['Icon'] }] },
-    { code: '<Icon>arrow</Icon>', options: [{ ignoreComponent: ['Icon'] }] },
+    {
+      code: '<Icon>arrow</Icon>',
+      options: [
+        {
+          'jsx-components': { exclude: ['Icon'] },
+        },
+      ],
+    },
     {
       code: `a + "b"
     const c = <div>{import("abc")}</div>
