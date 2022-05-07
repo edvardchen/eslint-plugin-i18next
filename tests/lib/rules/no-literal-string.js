@@ -68,7 +68,9 @@ ruleTester.run('no-literal-string', rule, {
       code: 'foo.bar("taa");',
       options: [
         {
-          ignoreCallee: [/foo.+/],
+          callees: {
+            exclude: ['foo.+'],
+          },
         },
       ],
     },

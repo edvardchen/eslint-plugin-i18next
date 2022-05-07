@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["jsx-text-only", "jsx-only", "all"]
+    },
+    "jsx-components": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "jsx-attributes": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "words": {
+      "type": "object",
+      "properties": {
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "callees": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "object-properties": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "class-properties": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "message": { "type": "string" },
+    "should-validate-template": { "type": "boolean" }
+  }
+}
