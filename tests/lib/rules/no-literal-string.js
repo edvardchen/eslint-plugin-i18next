@@ -16,25 +16,25 @@ var rule = require('../../../lib/rules/no-literal-string'),
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
-const message = 'disallow literal string';
-const errors = [{ message }]; // default errors
+// const message = 'disallow literal string';
+const errors = 1;
 
 var ruleTester = new RuleTester({
   parser: require.resolve('babel-eslint'),
-  parserOptions: {
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  parserOptions: { sourceType: 'module', ecmaFeatures: { jsx: true } },
 });
+
+function testFile(file) {
+  return {
+    code: fs.readFileSync(`${__dirname}/fixtures/${file}`, {
+      encoding: 'utf8',
+    }),
+  };
+}
+
 ruleTester.run('no-literal-string', rule, {
   valid: [
-    {
-      code: fs.readFileSync(__dirname + '/fixtures/valid.js', {
-        encoding: 'utf8',
-      }),
-    },
+    testFile('valid.jsx'),
     {
       code: 'const a = "absfoo";',
       options: [{ words: { exclude: ['.*foo.*'] } }],
@@ -53,11 +53,6 @@ ruleTester.run('no-literal-string', rule, {
     },
     // JSX
     {
-      code: fs.readFileSync(__dirname + '/fixtures/valid.jsx', {
-        encoding: 'utf8',
-      }),
-    },
-    {
       code: '<DIV foo="bar" />',
       options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
     },
@@ -70,17 +65,12 @@ ruleTester.run('no-literal-string', rule, {
       ],
     },
     {
-      code: `a + "b"
-    const c = <div>{import("abc")}</div>
-    const d = <div>{[].map(item=>"abc")}</div>
-    const e = <div>{"hello" + "world"}</div>
-    const f = <DIV foo="FOO" />
-        `,
-      options: [{ markupOnly: true }],
+      ...testFile('valid-jsx-text-only.jsx'),
+      options: [{ mode: 'jsx-text-only' }],
     },
     {
       code: '<DIV foo="bar1" />',
-      options: [{ markupOnly: true, 'jsx-attributes': { exclude: ['foo'] } }],
+      options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
     },
     {
       code: '<DIV foo="bar2" />',
@@ -96,12 +86,7 @@ ruleTester.run('no-literal-string', rule, {
   ],
 
   invalid: [
-    {
-      code: fs.readFileSync(__dirname + '/fixtures/invalid.js', {
-        encoding: 'utf8',
-      }),
-      errors: 8,
-    },
+    { ...testFile('invalid.jsx'), errors: 13 },
     {
       code: 'var a = `hello ${abc} world`',
       options: [{ validateTemplate: true }],
@@ -117,27 +102,12 @@ ruleTester.run('no-literal-string', rule, {
       options: [{ words: { exclude: ['^foo'] } }],
       errors,
     },
-    {
-      code: 'var a = {foo: "foo"};',
-      options: [{ ignoreProperty: ['bar'] }],
-      errors,
-    },
     // JSX
-    { code: '<div>foo</div>', errors },
-    { code: '<div>foo</div>', options: [{ markupOnly: true }], errors },
-    { code: '<>foo999</>', options: [{ markupOnly: true }], errors },
-    // { code: '<div>FOO</div>', errors },
     {
-      code: '<div>{"hello world"}</div>',
-      options: [{ markupOnly: true }],
-      errors,
+      ...testFile('invalid-jsx-only.jsx'),
+      options: [{ mode: 'jsx-only' }],
+      errors: 5,
     },
-    { code: '<div>フー</div>', errors },
-    { code: '<DIV foo="bar" />', errors },
-    { code: '<DIV foo="bar" />', options: [{ markupOnly: true }], errors },
-    { code: '<DIV foo={"bar"} />', options: [{ markupOnly: true }], errors },
-    { code: '<img src="./image.png" alt="some-image" />', errors },
-    { code: '<button aria-label="Close" type="button" />', errors },
   ],
 });
 
@@ -200,7 +170,7 @@ tsTester.run('no-literal-string', rule, {
   ],
   invalid: [
     {
-      code: '<>foo999</>',
+      code: '<>foo123</>',
       filename: 'a.tsx',
       options: [{ markupOnly: true }],
       errors,

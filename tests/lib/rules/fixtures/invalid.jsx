@@ -18,3 +18,11 @@ var e = { foo: 'bar' };
 class Form extends Component {
   property = 'Something';
 }
+
+<>
+  <div>foo</div>
+  <div>フー</div>
+  <DIV foo="bar" />
+  <img src="./image.png" alt="some-image" />
+  <button aria-label="Close" type="button" />
+</>
