@@ -1,5 +1,5 @@
 {
-  "mode": "all",
+  "mode": "jsx-text-only",
   "jsx-components": {
     "include": [],
     "exclude": ["Trans"]

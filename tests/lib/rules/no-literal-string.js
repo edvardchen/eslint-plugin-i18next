@@ -29,32 +29,34 @@ function testFile(file) {
     code: fs.readFileSync(`${__dirname}/fixtures/${file}`, {
       encoding: 'utf8',
     }),
+    options: [{ mode: 'all' }],
   };
 }
 
 ruleTester.run('no-literal-string', rule, {
   valid: [
     testFile('valid.jsx'),
+    { code: 'const a = "absfoo";<DIV abc="bcd" />' },
     {
       code: 'const a = "absfoo";',
-      options: [{ words: { exclude: ['.*foo.*'] } }],
+      options: [{ mode: 'all', words: { exclude: ['.*foo.*'] } }],
     },
     {
       code: 'const a = "fooabc";',
-      options: [{ words: { exclude: ['^foo.*'] } }],
+      options: [{ mode: 'all', words: { exclude: ['^foo.*'] } }],
     },
     {
       code: 'foo.bar("taa");',
-      options: [{ callees: { exclude: ['foo.+'] } }],
+      options: [{ mode: 'all', callees: { exclude: ['foo.+'] } }],
     },
     {
       code: 'var a = {foo: "foo"};',
-      options: [{ 'object-properties': { exclude: ['foo'] } }],
+      options: [{ mode: 'all', 'object-properties': { exclude: ['foo'] } }],
     },
     // JSX
     {
       code: '<DIV foo="bar" />',
-      options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
+      options: [{ mode: 'all', 'jsx-attributes': { exclude: ['foo'] } }],
     },
     {
       code: '<Icon>arrow</Icon>',
@@ -70,18 +72,28 @@ ruleTester.run('no-literal-string', rule, {
     },
     {
       code: '<DIV foo="bar1" />',
-      options: [{ 'jsx-attributes': { exclude: ['foo'] } }],
+      options: [
+        {
+          mode: 'all',
+          'jsx-attributes': { exclude: ['foo'] },
+        },
+      ],
     },
     {
       code: '<DIV foo="bar2" />',
-      options: [{ 'jsx-attributes': { include: ['bar'] } }],
+      options: [{ mode: 'all', 'jsx-attributes': { include: ['bar'] } }],
     },
     {
       code: `import(\`hello\`);
                 var a = \`12345\`
                 var a = \`\`
           `,
-      options: [{ validateTemplate: true }],
+      options: [
+        {
+          mode: 'all',
+          validateTemplate: true,
+        },
+      ],
     },
   ],
 
@@ -89,17 +101,32 @@ ruleTester.run('no-literal-string', rule, {
     { ...testFile('invalid.jsx'), errors: 13 },
     {
       code: 'var a = `hello ${abc} world`',
-      options: [{ validateTemplate: true }],
+      options: [
+        {
+          validateTemplate: true,
+          mode: 'all',
+        },
+      ],
       errors,
     },
     {
       code: 'var a = `hello world`',
-      options: [{ validateTemplate: true }],
+      options: [
+        {
+          mode: 'all',
+          validateTemplate: true,
+        },
+      ],
       errors,
     },
     {
       code: 'const a = "afoo";',
-      options: [{ words: { exclude: ['^foo'] } }],
+      options: [
+        {
+          mode: 'all',
+          words: { exclude: ['^foo'] },
+        },
+      ],
       errors,
     },
     // JSX
@@ -127,6 +154,7 @@ vueTester.run('no-literal-string', rule, {
   invalid: [
     {
       code: '<template>{{ a("abc") }}</template>',
+      options: [{ mode: 'all' }],
       errors,
     },
     {
@@ -135,6 +163,7 @@ vueTester.run('no-literal-string', rule, {
     },
     {
       code: '<template>{{"hello"}}</template>',
+      options: [{ mode: 'all' }],
       errors,
     },
   ],
@@ -172,7 +201,6 @@ tsTester.run('no-literal-string', rule, {
     {
       code: '<>foo123</>',
       filename: 'a.tsx',
-      options: [{ mode: 'jsx-text-only' }],
       errors,
     },
     {
@@ -180,7 +208,11 @@ tsTester.run('no-literal-string', rule, {
       filename: 'a.tsx',
       errors,
     },
-    { code: "var a: {type: string} = {type: 'bb'}", errors },
+    {
+      code: "var a: {type: string} = {type: 'bb'}",
+      options: [{ mode: 'all' }],
+      errors,
+    },
   ],
 });
 // ────────────────────────────────────────────────────────────────────────────────
