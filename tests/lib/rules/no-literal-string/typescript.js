@@ -1,6 +1,7 @@
 const RuleTester = require('eslint').RuleTester;
 const path = require('path');
 const rule = require('../../../../lib/rules/no-literal-string');
+const testFile = require('../../helpers/testFile');
 
 const tsTester = new RuleTester({
   parser: require.resolve('@typescript-eslint/parser'),
@@ -18,23 +19,26 @@ tsTester.run('no-literal-string: typescript', rule, {
       filename: 'a.jsx',
     },
     {
-      code: `declare module 'country-emoji' {}`,
+      ...testFile('valid-typescript.ts'),
+      options: [{ mode: 'all' }],
     },
     {
       code: '<div className="hello"></div>',
+      options: [{ mode: 'all' }],
       filename: 'a.tsx',
     },
-    { code: "var a: Element['nodeName']" },
-    { code: "var a: Omit<T, 'af'>" },
-    { code: "function Button({ t= 'name'  }: {t: string}){} " },
-    { code: `var a: 'abc' = 'abc'` },
-    { code: `var a: 'abc' | 'name'  | undefined= 'abc'` },
-    { code: "type T = {name: 'b'} ; var a: T =  {name: 'b'}" },
-    { code: "enum T  {howard=1, 'a b'=2} ; var a = T['howard']" },
-    { code: "function Button({ t= 'name'  }: {t: 'name'}){} " },
-    { code: "type T ={t?:'name'|'abc'};function Button({t='name'}:T){}" },
   ],
   invalid: [
+    {
+      code: 'let a:string; a="hello"',
+      options: [{ mode: 'all' }],
+      errors: 1,
+    },
+    {
+      code: 'const a="foobar"',
+      options: [{ mode: 'all' }],
+      errors: 1,
+    },
     {
       code: '<>foo123</>',
       filename: 'a.tsx',
@@ -58,4 +62,3 @@ tsTester.run('no-literal-string: typescript', rule, {
     },
   ],
 });
-// ────────────────────────────────────────────────────────────────────────────────
