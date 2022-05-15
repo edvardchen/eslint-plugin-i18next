@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.2.1...v6.0.0-0) (2022-05-15)
+
+
+### Features
+
+* make mode defaults to jsx-text-only ([7cc75ab](https://github.com/edvardchen/eslint-plugin-i18next/commit/7cc75ab))
+* support callees option ([1934216](https://github.com/edvardchen/eslint-plugin-i18next/commit/1934216))
+* support option jsx-attributes ([08ae48b](https://github.com/edvardchen/eslint-plugin-i18next/commit/08ae48b))
+* support option jsx-components ([99af7e1](https://github.com/edvardchen/eslint-plugin-i18next/commit/99af7e1))
+* support option mode ([3193108](https://github.com/edvardchen/eslint-plugin-i18next/commit/3193108))
+* support option object-properties ([484fcfb](https://github.com/edvardchen/eslint-plugin-i18next/commit/484fcfb))
+* support option words ([874a694](https://github.com/edvardchen/eslint-plugin-i18next/commit/874a694))
+
 ### 5.2.1 (2022-05-05)
 
 ## 5.2.0 (2022-05-05)
