@@ -21,7 +21,7 @@
     "preversion": "npm run test",
     "postpublish": "git push --follow-tags",
     "test:watch": "npm t -- --watch",
-    "test": "mocha tests/lib/rules"
+    "test": "mocha --timeout 50000 tests/lib/rules/no-literal-string/"
   },
   "dependencies": {
     "requireindex": "~1.1.0"

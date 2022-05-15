@@ -3,7 +3,7 @@ import('hello');
 // don't validate template by default
 var aa = `hello world`;
 
-function bar(a = 'jianhua') {}
+function bar(a = 'jianhua') { }
 
 name === 'Android' || name === 'iOS';
 
@@ -75,4 +75,5 @@ class Form extends Component {
   <Trans>
     <span>bar</span>
   </Trans>
+  <div>{import("abc")}</div>
 </>;
