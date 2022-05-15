@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-0...v6.0.0-1) (2022-05-15)
+
+
+### Features
+
+* support union type ([a885683](https://github.com/edvardchen/eslint-plugin-i18next/commit/a885683))
+
 ## [6.0.0-0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v5.2.1...v6.0.0-0) (2022-05-15)
 
 
