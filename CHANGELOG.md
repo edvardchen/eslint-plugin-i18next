@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-2](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-1...v6.0.0-2) (2022-05-15)
+
+
+### Bug Fixes
+
+* validate correctly call chains ([dc33346](https://github.com/edvardchen/eslint-plugin-i18next/commit/dc33346)), closes [#54](https://github.com/edvardchen/eslint-plugin-i18next/issues/54)
+
 ## [6.0.0-1](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-0...v6.0.0-1) (2022-05-15)
 
 
