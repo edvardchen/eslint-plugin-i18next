@@ -1,87 +1,77 @@
 # disallow literal string (no-literal-string)
 
-This rule aims to avoid developers to display literal string to users
-in those projects which need to support [multi-language](https://www.i18next.com/).
+This rule aims to avoid developers to display literal string directly to users without translating them.
 
 ## Rule Details
 
-It will find out all literal strings and validate them.
+Example of incorrect code:
 
-Examples of **incorrect** code for this rule:
-
-```js
+```jsx
 /*eslint i18next/no-literal-string: "error"*/
-const a = 'foo';
+<div>hello world</div>
 ```
 
-Examples of **correct** code for this rule:
+Example of correct code:
 
-```js
+```jsx
 /*eslint i18next/no-literal-string: "error"*/
-// safe to assign string to const variables whose name are UPPER_CASE
-var FOO = 'foo';
-
-// UPPER_CASE properties are valid no matter if they are computed or not
-var a = {
-  BAR: 'bar',
-  [FOO]: 'foo'
-};
-
-// also safe to use strings themselves are UPPCASE_CASE
-var foo = 'FOO';
-```
-
-### i18n
-
-This rule allows to call i18next translate function.
-
-**Correct** code:
-
-```js
-/*eslint i18next/no-literal-string: "error"*/
-var bar = i18next.t('bar');
-var bar2 = i18n.t('bar');
-```
-
-### Redux/Vuex
-
-This rule also works with those state managers like
-[Redux](https://redux.js.org/) and [Vuex](https://vuex.vuejs.org/).
-
-**Correct** code:
-
-```js
-/*eslint i18next/no-literal-string: "error"*/
-var bar = store.dispatch('bar');
-var bar2 = store.commit('bar');
+<div>{i18next.t('HELLO_KEY')}</div>
 ```
 
 ## Options
 
-### ignore
+The option's typing definition looks like:
 
-The `ignore` option specifies exceptions not to check for
-literal strings that match one of regexp paterns.
-
-Examples of correct code for the `{ "ignore": ['foo'] }` option:
-
-```js
-/*eslint i18next/no-literal-string: ["error", {"ignore": ["foo"]}]*/
-const a = 'afoo';
+```typescript
+type MySchema = {
+  [key in
+    | 'words'
+    | 'jsx-components'
+    | 'jsx-attributes'
+    | 'callees'
+    | 'object-properties'
+    | 'class-properties']?: {
+    include?: string[];
+    exclude?: string[];
+  };
+} & {
+  mode?: 'jsx-text-only' | 'jsx-only' | 'all';
+  message?: string;
+  'should-validate-template'?: boolean;
+};
 ```
 
-### ignoreCallee
+### `exclude` and `include`
 
-THe `ignoreCallee` option speficies exceptions not check for
-function calls whose names match one of regexp patterns.
+Instead of expanding options immoderately, a standard and scalable way to set options is provided
 
-Examples of correct code for the `{ "ignoreCallee": ["foo"] }` option:
+You cam use `exclude` and `include` of each options to control which should be validated and which should be ignored.
 
-```js
-/*eslint i18next/no-literal-string: ["error", { "ignoreCallee": ["foo"] }]*/
-const bar = foo('bar');
-```
+The values of these two fields are treated as regular expressions.
+
+1. If both are used, both conditions need to be satisfied
+2. If both are emitted, it will be validated
+
+For selectors,
+
+- `words` controls plain text
+- `jsx-components` controls JSX elements
+- `jsx-attributes` controls JSX elements' attributes
+- `callees` controls function calls
+- `object-properties` controls objects' properties
+- `class-properties` controls classes' properties
+
+Other options,
+
+- `mode` provides a straightforward way to decides the range you want to validate literal strings.
+  It defaults to `jsx-text-only` which only forbids to write plain text in JSX markup
+  - `jsx-only` validates the JSX attributes as well
+  - `all` validates all literal strings
+- `message` defines the custom error message
+- `should-validate-template` decides if we should validate the string templates
+
+You can see [the default options here](../../lib/options/defaults.json)
 
 ## When Not To Use It
 
-Your project maybe not need to support multi-language or you dont care to spread literal string anywhre.
+Your project maybe not need to support multi-language or you don't care to spread literal string anywhere.
