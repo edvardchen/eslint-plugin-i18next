@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-3](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-2...v6.0.0-3) (2022-05-18)
+
+
+### Bug Fixes
+
+* support to ignore member expression in assignments ([178b703](https://github.com/edvardchen/eslint-plugin-i18next/commit/178b703100e6c13ceafb4fd1032696cae47e55c8))
+
 ## [6.0.0-2](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-1...v6.0.0-2) (2022-05-15)
 
 
