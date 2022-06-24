@@ -62,5 +62,5 @@ More options can be found [here](./docs/rules/no-literal-string.md)
 
 ### Breaking change
 
-By default, it wil only validate the plain text in JSX markup instead of all literal strings in previous versions.
+By default, it will only validate the plain text in JSX markup instead of all literal strings in previous versions.
 [You can change it easily](./docs/rules/no-literal-string.md)
