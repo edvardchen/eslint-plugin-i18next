@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-5](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-4...v6.0.0-5) (2022-07-14)
+
+
+### Bug Fixes
+
+* corrected typo ([9fba5c2](https://github.com/edvardchen/eslint-plugin-i18next/commit/9fba5c287f9f55f2e71c3e41f163ae8793fe5cc1))
+* remove the problematic typescript validation ([a021fe0](https://github.com/edvardchen/eslint-plugin-i18next/commit/a021fe06c0db26d732739bb56604bcbf28aad431))
+
 ## [6.0.0-4](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-3...v6.0.0-4) (2022-05-31)
 
 ## [6.0.0-3](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-2...v6.0.0-3) (2022-05-18)
