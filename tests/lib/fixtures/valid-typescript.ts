@@ -4,7 +4,7 @@ var a3: Omit<T, 'af'>;
 
 function Button({ t = 'name' }: { t: string }) {}
 // var aa: 'abc' = 'abc';
-var a4: 'abc' | 'name' | undefined = 'abc';
+// var a4: 'abc' | 'name' | undefined = 'abc';
 
 // type T = { name: 'b' };
 // var a5: T = { name: 'b' };
