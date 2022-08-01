@@ -52,16 +52,71 @@ The values of these two fields are treated as regular expressions.
 1. If both are used, both conditions need to be satisfied
 2. If both are emitted, it will be validated
 
-For selectors,
+### Option `words`
 
-- `words` controls plain text
-- `jsx-components` controls JSX elements
-- `jsx-attributes` controls JSX elements' attributes
-- `callees` controls function calls
-- `object-properties` controls objects' properties
-- `class-properties` controls classes' properties
+`words` decides whether literal strings are allowed (in any situation), solely based on **the content of the string**
 
-Other options,
+e.g. if `.*foo.*` is excluded, the following literals are allowed no matter where they are used
+
+```js
+method('afoo');
+const message = 'foob';
+
+<Component value="foo" />;
+```
+
+### Selector options
+
+- `jsx-components` decides whether literal strings as children within a component are allowed, based on the component name
+
+  e.g. by default, `Trans` is excluded, so `Hello World` in the following is allowed.
+
+  ```jsx
+  <Trans i18nKey="greeting">Hello World</Trans>
+  ```
+
+- `jsx-attributes` decides whether literal strings are allowed as JSX attribute values, based on the name of the attribute
+
+  e.g. if `data-testid` is excluded, `important-button` in the following is allowed
+
+  ```jsx
+  <button data-testid="important-button" onClick={handleClick}>
+    {t('importantButton.label')}
+  </button>
+  ```
+
+- `callees` decides whether literal strings are allowed as function arguments, based on the identifier of the function being called
+
+  e.g. if `window.open` is excluded, `http://example.com` in the following is allowed
+
+  ```js
+  window.open('http://example.com');
+  ```
+
+  `callees` also covers object constructors, such as `new Error('string')` or `new URL('string')`
+
+- `object-properties` decides whether literal strings are allowed as object property values, based on the property key
+
+  e.g. if `fieldName` is excluded but `label` is not, `currency_code` is allowed but `Currency` is not:
+
+  ```js
+  const fieldConfig = {
+    fieldName: 'currency_code',
+    label: 'Currency',
+  };
+  ```
+
+- `class-properties` decides whether literal strings are allowed as class property values, based on the property key
+
+  e.g. by default, `displayName` is excluded, so `MyComponent` is allowed
+
+  ```js
+  class My extends Component {
+    displayName = 'MyComponent';
+  }
+  ```
+
+### Other options
 
 - `mode` provides a straightforward way to decides the range you want to validate literal strings.
   It defaults to `jsx-text-only` which only forbids to write plain text in JSX markup
