@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-6](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-5...v6.0.0-6) (2022-11-21)
+
 ## [6.0.0-5](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-4...v6.0.0-5) (2022-07-14)
 
 
