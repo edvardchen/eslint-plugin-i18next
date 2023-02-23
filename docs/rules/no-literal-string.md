@@ -45,7 +45,7 @@ type MySchema = {
 
 Instead of expanding options immoderately, a standard and scalable way to set options is provided
 
-You cam use `exclude` and `include` of each options to control which should be validated and which should be ignored.
+You can use `exclude` and `include` of each options to control which should be validated and which should be ignored.
 
 The values of these two fields are treated as regular expressions.
 
