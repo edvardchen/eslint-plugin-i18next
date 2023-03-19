@@ -1,7 +1,7 @@
 import('hello');
 
-// don't validate template by default
-var aa = `hello world`;
+// don't validate template literals with expressions by default
+var aa = `hello world, ${name}`;
 
 function bar(a = 'jianhua') { }
 
