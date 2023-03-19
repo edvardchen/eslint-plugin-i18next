@@ -9,57 +9,42 @@
     "jsx-components": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "type": "string" } },
-        "exclude": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
       }
     },
     "jsx-attributes": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "type": "string" } },
-        "exclude": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
       }
     },
     "words": {
       "type": "object",
       "properties": {
-        "exclude": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "exclude": { "type": "array" }
       }
     },
     "callees": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "type": "string" } },
-        "exclude": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
       }
     },
     "object-properties": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "type": "string" } },
-        "exclude": { "type": "array", "items": { "type": "string" } }
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
       }
     },
     "class-properties": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "type": "string" } },
-        "exclude": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
       }
     },
     "message": { "type": "string" },
