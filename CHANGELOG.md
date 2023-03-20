@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-7](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-6...v6.0.0-7) (2023-03-20)
+
+
+### Features
+
+* treat template literals without expressions as normal strings ([f740c1f](https://github.com/edvardchen/eslint-plugin-i18next/commit/f740c1f10bd0cde9644e0948172a37b5189b6245))
+
+
+### Bug Fixes
+
+* fixes [#94](https://github.com/edvardchen/eslint-plugin-i18next/issues/94) ([995aa78](https://github.com/edvardchen/eslint-plugin-i18next/commit/995aa78806a1059822bf3af828656bfa622c6a50))
+
 ## [6.0.0-6](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-5...v6.0.0-6) (2022-11-21)
 
 ## [6.0.0-5](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.0-4...v6.0.0-5) (2022-07-14)
