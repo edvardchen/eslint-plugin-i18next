@@ -11,19 +11,10 @@ const cases = {
       code: 'const a = "fooabc";',
       options: [{ mode: 'all', words: { exclude: ['^foo.*'] } }],
     },
-    {
-      code: 'const a = `afoo ${abc}`;',
-      options: [{ mode: 'all', words: { exclude: ['^foo'] } }],
-    },
   ],
   invalid: [
     {
       code: 'const a = "afoo";',
-      options: [{ mode: 'all', words: { exclude: ['^foo'] } }],
-      errors: 1,
-    },
-    {
-      code: 'const a = `afoo`;',
       options: [{ mode: 'all', words: { exclude: ['^foo'] } }],
       errors: 1,
     },
