@@ -7,7 +7,7 @@ ESLint plugin for i18n
 ## Installation
 
 ```bash
-npm install eslint-plugin-i18next@next --save-dev
+npm install eslint-plugin-i18next --save-dev
 ```
 
 ## Usage
