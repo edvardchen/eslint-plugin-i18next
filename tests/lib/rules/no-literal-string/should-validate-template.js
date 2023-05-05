@@ -11,10 +11,29 @@ const cases = {
   `,
       options,
     },
+
+    {
+      code: 'var a = `hello ${abc} world`',
+      options: [
+        {
+          mode: 'jsx-only',
+          'should-validate-template': true,
+        },
+      ],
+    },
   ],
   invalid: [
     { code: 'var a = `hello ${abc} world`', options, errors: 1 },
-    { code: 'var a = `hello world`', options, errors: 1 },
+    {
+      code: 'var a = "hello world"; <>`abcd`</>',
+      options: [
+        {
+          mode: 'jsx-only',
+          'should-validate-template': true,
+        },
+      ],
+      errors: 1,
+    },
   ],
 };
 
