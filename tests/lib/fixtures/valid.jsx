@@ -5,6 +5,8 @@ var aa = `hello world`;
 
 function bar(a = 'jianhua') { }
 
+var emojis = "🌼🌺🌸";
+
 name === 'Android' || name === 'iOS';
 
 switch (a) {

@@ -2,6 +2,8 @@ i18nextXt('taa');
 
 a + 'b';
 
+var emojis = "🌼🌺🌸hello world";
+
 switch (a) {
   case '':
     var a = 'b';
