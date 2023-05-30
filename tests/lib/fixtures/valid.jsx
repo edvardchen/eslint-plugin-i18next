@@ -77,5 +77,6 @@ class Form extends Component {
   <Trans>
     <span>bar</span>
   </Trans>
+  <span>&times;&amp;</span>
   <div>{import("abc")}</div>
 </>;
