@@ -125,7 +125,7 @@ const message = 'foob';
 - `message` defines the custom error message
 - `should-validate-template` decides if we should validate the string templates
 
-You can see [the default options here](../../lib/options/defaults.json)
+You can see [the default options here](../../lib/options/defaults.js)
 
 ## When Not To Use It
 
