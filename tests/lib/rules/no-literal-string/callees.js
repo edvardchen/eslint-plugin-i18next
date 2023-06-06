@@ -12,7 +12,7 @@ const cases = {
       options: [{ mode: 'all', callees: { exclude: ['foo.+'] } }],
     },
   ],
-  invalid: [{ ...testFile('invalid.jsx'), errors: 13 }],
+  invalid: [{ ...testFile('invalid.jsx'), errors: 14 }],
 };
 
 runTest('no-literal-string: callees', cases);

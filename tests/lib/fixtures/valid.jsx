@@ -5,6 +5,8 @@ var aa = `hello world`;
 
 function bar(a = 'jianhua') { }
 
+var emojis = "🌼🌺🌸";
+
 name === 'Android' || name === 'iOS';
 
 switch (a) {
@@ -75,5 +77,6 @@ class Form extends Component {
   <Trans>
     <span>bar</span>
   </Trans>
+  <span>&times;&amp;</span>
   <div>{import("abc")}</div>
 </>;
