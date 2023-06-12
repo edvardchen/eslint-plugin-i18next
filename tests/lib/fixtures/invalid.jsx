@@ -27,4 +27,5 @@ class Form extends Component {
   <DIV foo="bar" />
   <img src="./image.png" alt="some-image" />
   <button aria-label="Close" type="button" />
+  <div title="pink flower">🌸</div>
 </>

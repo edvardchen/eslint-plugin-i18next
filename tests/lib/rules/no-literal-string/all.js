@@ -4,7 +4,7 @@ const runTest = require('../../helpers/runTest');
 const cases = {
   valid: [testFile('valid.jsx')],
   invalid: [
-    { ...testFile('invalid.jsx'), errors: 14 },
+    { ...testFile('invalid.jsx'), errors: 15 },
     {
       code: `export const validationSchema = Yup.object({
         email: Yup
