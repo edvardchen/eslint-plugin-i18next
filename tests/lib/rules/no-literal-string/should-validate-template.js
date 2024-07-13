@@ -1,7 +1,5 @@
-const testFile = require('../../helpers/testFile');
 const runTest = require('../../helpers/runTest');
 
-const options = [{ mode: 'all', 'should-validate-template': true }];
 const cases = {
   valid: [
     {
@@ -9,29 +7,34 @@ const cases = {
 	var a = \`12345\`
 	var a = \`\`
   `,
-      options,
+      options: [{ mode: 'all', 'should-validate-template': true }],
     },
 
     {
       code: 'var a = `hello ${abc} world`',
+      options: [{ mode: 'jsx-only', 'should-validate-template': true }],
+    },
+
+    {
+      code: 'const StyledParagaph = styled.p`some css here`',
       options: [
         {
-          mode: 'jsx-only',
+          mode: 'all',
+          callees: { exclude: ['styled.*'] },
           'should-validate-template': true,
         },
       ],
     },
   ],
   invalid: [
-    { code: 'var a = `hello ${abc} world`', options, errors: 1 },
+    {
+      code: 'var a = `hello ${abc} world`',
+      options: [{ mode: 'all', 'should-validate-template': true }],
+      errors: 1,
+    },
     {
       code: 'var a = "hello world"; <>`abcd`</>',
-      options: [
-        {
-          mode: 'jsx-only',
-          'should-validate-template': true,
-        },
-      ],
+      options: [{ mode: 'jsx-only', 'should-validate-template': true }],
       errors: 1,
     },
   ],
