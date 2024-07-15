@@ -18,4 +18,11 @@ var a6 = T2['howard'];
 function Button2({ t = 'name' }: { t: 'name' }) {}
 
 type Ta = { t?: 'name' | 'abc' };
+let ta: Ta = { t: 'abc' };
+
+const str: 'str' = 'str';
+
+type Animal = 'dog' | 'cat';
+const animal: Animal = 'dog';
+
 function Button3({ t = 'name' }: Ta) {}
