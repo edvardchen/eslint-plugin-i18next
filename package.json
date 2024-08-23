@@ -16,6 +16,7 @@
   "files": [
     "lib"
   ],
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/edvardchen/eslint-plugin-i18next.git"
