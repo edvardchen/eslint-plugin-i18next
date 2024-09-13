@@ -3,7 +3,10 @@ import pluginJs from '@eslint/js';
 import i18next from 'eslint-plugin-i18next';
 
 export default [
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: { globals: globals.browser },
+    linterOptions: { reportUnusedDisableDirectives: 'error' },
+  },
   pluginJs.configs.recommended,
   {
     plugins: { i18next },

@@ -26,8 +26,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build, and test
         run: |
-          npm ci
-          npm run build --if-present
-          npm test
+          pnpm i --frozen-lockfile
+          pnpm run build --if-present
+          pnpm test
         env:
           CI: true

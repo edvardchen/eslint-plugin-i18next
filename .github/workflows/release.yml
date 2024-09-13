@@ -20,10 +20,10 @@ jobs:
           git config --global user.email ${GITHUB_ACTOR}@users.noreply.github.com
       - name: npm install, build, and release
         run: |
-          npm ci
-          npx standard-version
-          git push --follow-tags
+          pnpm i --frozen-lockfile
+          pnpx standard-version
           npm publish
+          git push --follow-tags
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           CI: true
