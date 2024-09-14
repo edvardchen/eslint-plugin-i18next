@@ -8,7 +8,7 @@ export default [
     linterOptions: { reportUnusedDisableDirectives: 'error' },
   },
   pluginJs.configs.recommended,
-  i18next.configs?.['flat/recommended'],
+  i18next.configs['flat/recommended'],
   {
     rules: { 'i18next/no-literal-string': ['error', { mode: 'all' }] },
   },
