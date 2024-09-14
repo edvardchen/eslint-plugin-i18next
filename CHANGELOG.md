@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.0.11...v6.1.0) (2024-09-14)
+
+
+### Features
+
+* use pnpm ([394250d](https://github.com/edvardchen/eslint-plugin-i18next/commit/394250df22c835611c80d5035b304f302799330b))
+
 ### 6.0.11 (2024-09-12)
 
 ### 6.0.10 (2024-07-20)
