@@ -16,18 +16,21 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 18.x]
+        node-version: [18.x, 20.x]
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: pnpm/action-setup@v2
         with:
+          version: 8.13.1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build, and test
+      - name: build and test
         run: |
-          npm ci
-          npm run build --if-present
-          npm test
+          pnpm i --frozen-lockfile
+          pnpm test
         env:
           CI: true

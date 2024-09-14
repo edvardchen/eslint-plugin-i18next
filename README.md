@@ -12,27 +12,22 @@ npm install eslint-plugin-i18next --save-dev
 
 ## Usage
 
-Add `i18next` to the plugins section of your `.eslintrc` configuration file.
+For ESLint 9 flat configuration,
 
-```json
-{
-  "plugins": ["i18next"]
-}
+```js
+// eslint.config.mjs
+import i18next from 'eslint-plugin-i18next';
+
+export default [
+  // your other configs
+  i18next.configs['flat/recommended'],
+];
 ```
 
-Then configure the rules you want to use under the rules section.
+For ESLint 8 and below,
 
 ```json
-{
-  "rules": {
-    "i18next/no-literal-string": 2
-  }
-}
-```
-
-or
-
-```json
+// .eslintrc
 {
   "extends": ["plugin:i18next/recommended"]
 }

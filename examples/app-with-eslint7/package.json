@@ -1,20 +1,21 @@
 {
-  "name": "app-with-eslint9",
+  "name": "app-with-eslint7",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js"
+    "lint": "node test.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-i18next": "workspace:*"
+    "eslint-plugin-i18next": "workspace:*",
+    "zx": "^8.1.6"
   },
   "devDependencies": {
-    "@eslint/js": "^9.6.0",
-    "eslint": "^9.6.0",
+    "@rushstack/eslint-patch": "^1.10.4",
+    "eslint": "^7.0.0",
     "globals": "^15.8.0"
   }
 }
