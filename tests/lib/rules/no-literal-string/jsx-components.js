@@ -9,6 +9,10 @@ const cases = {
       options: [{ 'jsx-components': { exclude: ['Icon'] } }],
     },
     {
+      code: '<Icon.A>arrow</Icon.A>',
+      options: [{ 'jsx-components': { exclude: ['Icon.A'] } }],
+    },
+    {
       code: '<><span>hello</span><p>{i18next.t("KEY")}</p></>',
       options: [{ 'jsx-components': { include: ['p'] } }],
     },
