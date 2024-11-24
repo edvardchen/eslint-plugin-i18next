@@ -14,6 +14,18 @@ vueTester.run('no-literal-string: vue', rule, {
       code: '<template>{{ i18next.t("abc") }}</template>',
       options: [{ mode: 'all' }],
     },
+    {
+      code:
+        '<template><myVueComponent string-prop="this is a string literal"></myVueComponent><template>',
+      options: [
+        {
+          framework: 'vue',
+          mode: 'vue-template-only',
+          'jsx-attributes': { exclude: ['string-prop'] },
+        },
+      ],
+      errors: 0,
+    },
   ],
   invalid: [
     {
@@ -28,6 +40,18 @@ vueTester.run('no-literal-string: vue', rule, {
     {
       code: '<template>{{"hello"}}</template>',
       options: [{ mode: 'all' }],
+      errors: 1,
+    },
+    {
+      code:
+        '<template><myVueComponent string-prop="this is a string literal"></myVueComponent><template>',
+      options: [{ mode: 'all' }],
+      errors: 1,
+    },
+    {
+      code:
+        '<template><div>{{ "this is a string literal in mustaches" }}</div><template>',
+      options: [{ framework: 'vue', mode: 'vue-template-only' }],
       errors: 1,
     },
   ],

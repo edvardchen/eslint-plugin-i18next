@@ -35,7 +35,8 @@ type MySchema = {
     exclude?: string[];
   };
 } & {
-  mode?: 'jsx-text-only' | 'jsx-only' | 'all';
+  framework: 'react' | 'vue';
+  mode?: 'jsx-text-only' | 'jsx-only' | 'all' | 'vue-template-ony';
   message?: string;
   'should-validate-template'?: boolean;
 };
@@ -118,10 +119,14 @@ const message = 'foob';
 
 ### Other options
 
+- `framework` specifies the type of framework currently in use.
+  - `react` It defaults to 'react' which means you want to validate react component
+  - `vue` If you want to validate vue component, can set the value to be this
 - `mode` provides a straightforward way to decides the range you want to validate literal strings.
-  It defaults to `jsx-text-only` which only forbids to write plain text in JSX markup
-  - `jsx-only` validates the JSX attributes as well
-  - `all` validates all literal strings
+  It defaults to `jsx-text-only` which only forbids to write plain text in JSX markup,available when framework option is 'react'
+  - `jsx-only` validates the JSX attributes as well,available when framework option is 'react'
+  - `all` validates all literal strings,available when the value of the framework option is 'react' and 'vue'
+  - `vue-template-only`, only validate vue component template part,available when framework option value is 'vue'.
 - `message` defines the custom error message
 - `should-validate-template` decides if we should validate the string templates
 
