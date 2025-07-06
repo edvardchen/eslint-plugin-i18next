@@ -2,12 +2,13 @@ const RuleTester = require('eslint').RuleTester;
 const path = require('path');
 const rule = require('../../../../lib/rules/no-literal-string');
 const testFile = require('../../helpers/testFile');
+const tsParser = require('@typescript-eslint/parser');
 
 const tsTester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-  parserOptions: {
+  languageOptions: {
+    parser: tsParser,
     sourceType: 'module',
-    project: path.resolve(__dirname, 'tsconfig.json'),
+    ecmaVersion: 2022,
   },
 });
 
