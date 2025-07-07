@@ -19,7 +19,7 @@ const cases = {
   ],
   invalid: [
     {
-      code: '<><span>hello<span><p>world</p></>',
+      code: '<><span>hello</span><p>world</p></>',
       options: [{ 'jsx-components': { include: ['span'] } }],
       errors: 1,
     },

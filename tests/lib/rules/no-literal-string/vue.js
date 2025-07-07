@@ -1,10 +1,12 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../../lib/rules/no-literal-string');
+const vueParser = require('vue-eslint-parser');
 
 const vueTester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: {
+  languageOptions: {
+    parser: vueParser,
     sourceType: 'module',
+    ecmaVersion: 2022,
   },
 });
 
@@ -24,7 +26,6 @@ vueTester.run('no-literal-string: vue', rule, {
           'jsx-attributes': { exclude: ['string-prop'] },
         },
       ],
-      errors: 0,
     },
   ],
   invalid: [
