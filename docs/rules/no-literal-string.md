@@ -36,7 +36,7 @@ type MySchema = {
   };
 } & {
   framework: 'react' | 'vue';
-  mode?: 'jsx-text-only' | 'jsx-only' | 'all' | 'vue-template-ony';
+  mode?: 'jsx-text-only' | 'jsx-only' | 'all' | 'vue-template-only';
   message?: string;
   'should-validate-template'?: boolean;
 };
