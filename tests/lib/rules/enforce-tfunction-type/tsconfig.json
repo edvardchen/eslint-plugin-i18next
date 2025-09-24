@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "sourceMap": true,
+    "strict": true,
+    "preserveWatchOutput": true,
+    "allowUnreachableCode": false,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "esModuleInterop": true
+  },
+  "include": ["../../fixtures/enforce-tfunction-type/**/*.ts", "../../fixtures/enforce-tfunction-type/**/*.tsx"]
+}
