@@ -11,11 +11,30 @@ const cases = {
       code: 'const a = "fooabc";',
       options: [{ mode: 'all', words: { exclude: ['^foo.*'] } }],
     },
+    {
+      code: 'const a = "foo";',
+      options: [
+        { mode: 'all', words: { include: ['^foo.*'], exclude: ['^foo'] } },
+      ],
+    },
+    {
+      code: 'const a = "fooabc";',
+      options: [
+        { mode: 'all', words: { include: ['^foo.*'], exclude: ['^foo.*'] } },
+      ],
+    },
   ],
   invalid: [
     {
       code: 'const a = "afoo";',
       options: [{ mode: 'all', words: { exclude: ['^foo'] } }],
+      errors: 1,
+    },
+    {
+      code: 'const a = "fooabc";',
+      options: [
+        { mode: 'all', words: { include: ['^foo.*'], exclude: ['^foo'] } },
+      ],
       errors: 1,
     },
   ],
