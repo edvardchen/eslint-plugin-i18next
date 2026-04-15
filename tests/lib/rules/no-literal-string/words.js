@@ -18,6 +18,14 @@ const cases = {
       options: [{ mode: 'all', words: { exclude: ['^foo'] } }],
       errors: 1,
     },
+    {
+      code: '<p>TEST..</p>',
+      errors: 1,
+    },
+    {
+      code: '<p>Loading...</p>',
+      errors: 1,
+    },
   ],
 };
 
