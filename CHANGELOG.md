@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.4](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.1.3...v6.1.4) (2026-04-15)
+
+
+### Bug Fixes
+
+* correct flat config type ([213ace8](https://github.com/edvardchen/eslint-plugin-i18next/commit/213ace8ae76e6a5639a3f39189688ac57d97456a))
+* support eslint 10 ([e046a60](https://github.com/edvardchen/eslint-plugin-i18next/commit/e046a6035b476468aafe1b8d14f52a9b911e8ff7))
+* update npm release workflow ([7d81f5e](https://github.com/edvardchen/eslint-plugin-i18next/commit/7d81f5ee41ce814807cd2f814571c3c7176d64b9))
+
 ### 6.1.3 (2025-07-20)
 
 ### 6.1.2 (2025-07-07)
