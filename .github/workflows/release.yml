@@ -1,34 +1,47 @@
 name: release
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
         with:
-          version: 9.13.2
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          registry-url: 'https://registry.npmjs.org/'
-          node-version: 20.*
+          node-version: '22.14'
           cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Install npm for OIDC trusted publishing
+        run: npm install -g npm@^11.5.1
       - name: Configure committer
         run: |
           git config --global user.name ${GITHUB_ACTOR}
           git config --global user.email ${GITHUB_ACTOR}@users.noreply.github.com
-      - name: npm install, build, and release
+      - name: Install dependencies
         run: |
           pnpm i --frozen-lockfile
-          pnpx standard-version
-          npm publish
-          git push --follow-tags
+      - name: Version release
+        run: |
+          pnpm dlx standard-version
+      - name: Publish to npm
+        run: |
+          npm publish --access public
+      - name: Push release commit and tag
+        run: |
+          git push --follow-tags origin HEAD:main
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           CI: true
