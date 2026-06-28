@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.5](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.1.4...v6.1.5) (2026-06-28)
+
+
+### Bug Fixes
+
+* detect strings ending with ellipsis ([a3d5198](https://github.com/edvardchen/eslint-plugin-i18next/commit/a3d519819a3b272b1530d3ee46a3f409ef6cab41))
+
 ### [6.1.4](https://github.com/edvardchen/eslint-plugin-i18next/compare/v6.1.3...v6.1.4) (2026-04-15)
 
 
