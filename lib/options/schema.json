@@ -51,6 +51,13 @@
         "exclude": { "type": "array" }
       }
     },
+     "variable-names": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array" },
+        "exclude": { "type": "array" }
+      }
+    },
     "message": { "type": "string" },
     "should-validate-template": { "type": "boolean" }
   }

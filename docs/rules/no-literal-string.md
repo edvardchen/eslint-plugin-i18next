@@ -30,7 +30,8 @@ type MySchema = {
     | 'jsx-attributes'
     | 'callees'
     | 'object-properties'
-    | 'class-properties']?: {
+    | 'class-properties'
+    | 'variable-names']?: {
     include?: string[];
     exclude?: string[];
   };
@@ -115,6 +116,15 @@ const message = 'foob';
   class My extends Component {
     displayName = 'MyComponent';
   }
+  ```
+
+- `variable-names` decides whether literal strings are allowed as variables, based on the variable name
+
+  e.g. by default, `UPPER_CASE` constants are excluded, so the value `#f00` is allowed. `label` is not excluded so the value `Red` is not allowed:
+
+  ```js
+  const HEX_CODE = '#f00';
+  const label = 'Red';
   ```
 
 ### Other options
