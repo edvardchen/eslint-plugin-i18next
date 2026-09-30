@@ -58,7 +58,7 @@ tsTester.run('no-literal-string: typescript', rule, {
     {
       code: '<>foo999</>',
       filename: 'a.tsx',
-      options: [{ markupOnly: true, message: 'Some error message' }],
+      options: [{ message: 'Some error message' }],
       errors: [{ message: 'Some error message: <>foo999</>' }],
     },
     {
