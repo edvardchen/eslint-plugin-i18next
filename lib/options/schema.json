@@ -15,43 +15,50 @@
       "properties": {
         "include": { "type": "array" },
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "jsx-attributes": {
       "type": "object",
       "properties": {
         "include": { "type": "array" },
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "words": {
       "type": "object",
       "properties": {
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "callees": {
       "type": "object",
       "properties": {
         "include": { "type": "array" },
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "object-properties": {
       "type": "object",
       "properties": {
         "include": { "type": "array" },
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "class-properties": {
       "type": "object",
       "properties": {
         "include": { "type": "array" },
         "exclude": { "type": "array" }
-      }
+      },
+      "additionalProperties": false
     },
     "message": { "type": "string" },
     "should-validate-template": { "type": "boolean" }
-  }
+  },
+  "additionalProperties": false
 }
